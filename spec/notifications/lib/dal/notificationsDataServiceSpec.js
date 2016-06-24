@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var notificationsDataService = rfr("lib/dal/notificationsDataService");
+var notificationsDataService = rfr("notifications/lib/dal/notificationsDataService");
 
 describe("notificationsDataService", function () {
     it("requires a database", function(){

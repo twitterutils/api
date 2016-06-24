@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var notificationsController = rfr("lib/controllers/notifications");
+var notificationsController = rfr("notifications/lib/controllers/notifications");
 
 describe("notifications", function() {
     var controller = null;
