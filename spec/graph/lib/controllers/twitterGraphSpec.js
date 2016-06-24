@@ -29,8 +29,9 @@ describe("twitterGraph", function() {
             }
         };
 
-        var dbConnection = (r) => {
-            if (r === res){
+        var dbConnection = (r, dbConnectionKey) => {
+            if (dbConnectionKey === "GRAPH_DB_CONNECTION_STRING" &&
+                r === res){
                 return {
                     then: (successCallback, errorCallback) =>{
                         successCallback(db);

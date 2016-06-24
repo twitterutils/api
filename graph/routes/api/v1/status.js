@@ -3,7 +3,7 @@ var cache = require("the-api-cache");
 var dbConnection = require("web-api-mongodb-connection-factory");
 
 router.get("/", cache.longLived(), (req, res, next) => {
-    dbConnection(res).then((db) => {
+    dbConnection(res, "GRAPH_DB_CONNECTION_STRING").then((db) => {
         console.log("status ok");
         res.send({status: "ok"});
     });

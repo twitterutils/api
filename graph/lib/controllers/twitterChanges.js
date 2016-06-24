@@ -42,7 +42,7 @@ module.exports = function(
                 return;
             }
 
-            dbConnectionFactory(response)
+            dbConnectionFactory(response, "GRAPH_DB_CONNECTION_STRING")
                 .then((db) => {
                     readChanges(db, response, twitterUserId);
                 });
@@ -53,7 +53,7 @@ module.exports = function(
                 return;
             }
 
-            dbConnectionFactory(response)
+            dbConnectionFactory(response, "GRAPH_DB_CONNECTION_STRING")
                 .then((db) => {
                     twitterGraphDataService(db)
                         .first(graphId)

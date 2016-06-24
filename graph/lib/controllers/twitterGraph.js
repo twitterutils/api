@@ -6,7 +6,7 @@ module.exports = function(dbConnectionFactory, twitterGraphDataService, apiKey, 
                 return;
             }
 
-            dbConnectionFactory(response)
+            dbConnectionFactory(response, "GRAPH_DB_CONNECTION_STRING")
                 .then((db) => {
                     twitterGraphDataService(db)
                         .first(graphId)
