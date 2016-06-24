@@ -26,6 +26,7 @@
     "simple-api-key-validation": "^1.0.0",
     "the-api-cache": "^1.0.0",
     "the-promise-factory": "^1.0.0",
+    "underscore": "^1.8.3",
     "web-api-error": "^1.0.0",
     "web-api-mongodb-connection-factory": "^1.1.0"
   },
