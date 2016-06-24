@@ -1,4 +1,7 @@
-# api
+# Twitter Utils Api  
+
+[![Build Status](https://travis-ci.org/twitterutils/api.svg?branch=master)](https://travis-ci.org/twitterutils/api)  
+
 The ubiquitous Api... until it needs to be broken down in pieces
 
 ## Api Usage
