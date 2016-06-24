@@ -1,0 +1,37 @@
+{
+  "name": "twitter_utils",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prestart": "npm install --only=prod",
+    "start": "node --version && nf run node ./bin/www",
+    "predev": "npm install",
+    "dev": "DEBUG=twitter_utils:* PORT=8080 nf run supervisor ./bin/www",
+    "debug": "DEBUG=twitter_utils:* PORT=8080 nf run node-debug ./bin/www",
+    "test": "jasmine",
+    "testwatch": "watch -n2 jasmine",
+    "testdebug": "node-debug jasmine"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "foreman": "^1.4.1",
+    "iso-date-str": "^1.0.0",
+    "mongodb": "^2.1.7",
+    "morgan": "~1.6.1",
+    "oauth": "^0.9.14",
+    "rfr": "^1.2.3",
+    "shortid": "^2.2.4",
+    "simple-api-key-validation": "^1.0.0",
+    "the-api-cache": "^1.0.0",
+    "the-promise-factory": "^1.0.0",
+    "web-api-error": "^1.0.0",
+    "web-api-mongodb-connection-factory": "^1.0.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "node-inspector": "^0.12.7",
+    "supervisor": "^0.9.1"
+  }
+}
