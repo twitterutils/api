@@ -27,6 +27,10 @@ app.use("/graph/api/v1/changes", rfr("graph/routes/api/v1/user_changes_list"));
 app.use("/graph/api/v1/recentchanges", rfr("graph/routes/api/v1/recent_changes_list"));
 
 
+app.use("/notifications/api/v1/status", rfr("notifications/routes/api/v1/status"));
+app.use("/notifications/api/v1/send", rfr("notifications/routes/api/v1/send_notification"));
+
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     var err = new Error("Not Found");
