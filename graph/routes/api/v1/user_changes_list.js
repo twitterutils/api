@@ -3,7 +3,7 @@ var router = require("express").Router();
 var dbConnectionFactory = require("web-api-mongodb-connection-factory");
 var twitterChangesDataService = rfr("graph/lib/dal/twitterChangesDataService");
 var twitterGraphDataService = rfr("graph/lib/dal/twitterGraphDataService");
-var apiKey = require("simple-api-key-validation");
+var apiKey = rfr("lib/simpleApiKeyValidation");
 var webError = require("web-api-error");
 var twitterChanges = rfr("graph/lib/controllers/twitterChanges");
 
