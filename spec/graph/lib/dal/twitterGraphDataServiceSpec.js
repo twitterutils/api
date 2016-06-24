@@ -1,6 +1,6 @@
 var rfr = require("rfr");
 var promise = require("the-promise-factory");
-var twitterGraphDataService = rfr("lib/dal/twitterGraphDataService");
+var twitterGraphDataService = rfr("graph/lib/dal/twitterGraphDataService");
 
 describe("twitterGraphDataService", function(){
     it("requires a database", function(){

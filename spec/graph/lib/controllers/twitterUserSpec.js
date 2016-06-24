@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var twitterUserController = rfr("lib/controllers/twitterUser");
+var twitterUserController = rfr("graph/lib/controllers/twitterUser");
 
 describe("twitterUser", function() {
     var res = {
