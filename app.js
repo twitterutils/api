@@ -20,6 +20,13 @@ app.use("/login/api/v1/login", rfr("login/routes/api/v1/login"));
 app.use("/login/api/v1/auth/twitter_callback/", rfr("login/routes/api/v1/auth/twitter_callback"));
 
 
+app.use("/graph/api/v1/status", rfr("graph/routes/api/v1/status"));
+app.use("/graph/api/v1/graph", rfr("graph/routes/api/v1/graph_details"));
+app.use("/graph/api/v1/user", rfr("graph/routes/api/v1/user_details"));
+app.use("/graph/api/v1/changes", rfr("graph/routes/api/v1/user_changes_list"));
+app.use("/graph/api/v1/recentchanges", rfr("graph/routes/api/v1/recent_changes_list"));
+
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     var err = new Error("Not Found");
