@@ -1,5 +1,6 @@
 var router = require("express").Router();
-var cache = require("the-api-cache");
+var rfr = require("rfr");
+var cache = rfr("lib/theApiCache");
 var dbConnection = require("web-api-mongodb-connection-factory");
 
 router.get("/", cache.longLived(), (req, res, next) => {
