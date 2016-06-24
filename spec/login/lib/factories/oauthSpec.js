@@ -16,13 +16,13 @@ describe("oauth", function(){
 
     describe("when there's no auth_request_id", function(){
         it ("creates a client with the correct callback", function(){
-            expect(oauthFactory.create()._authorize_callback).toBe("tcb/api/v1/auth/twitter_callback");
+            expect(oauthFactory.create()._authorize_callback).toBe("tcb/login/api/v1/auth/twitter_callback");
         });
     });
 
     describe("when there's an auth_request_id", function(){
         it ("creates a client with the correct callback", function(){
-            expect(oauthFactory.create("uniqueid")._authorize_callback).toBe("tcb/api/v1/auth/twitter_callback/uniqueid/");
+            expect(oauthFactory.create("uniqueid")._authorize_callback).toBe("tcb/login/api/v1/auth/twitter_callback/uniqueid/");
         });
     });
 });
