@@ -33,9 +33,10 @@ describe("notifications", function() {
         spyOn(webErrorStub, "unexpected");
 
         openedConnections = 0;
-        var dbConnection = (r) => {
+        var dbConnection = (r, dbConnectionKey) => {
             openedConnections++;
-            if (r === res){
+            if (dbConnectionKey === "NOTIFICATIONS_DB_CONNECTION_STRING" &&
+                r === res){
                 return {
                     then: (successCallback, errorCallback) =>{
                         successCallback(db);
