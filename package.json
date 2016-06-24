@@ -26,7 +26,6 @@
     "shortid": "^2.2.4",
     "the-promise-factory": "^1.0.0",
     "underscore": "^1.8.3",
-    "web-api-error": "^1.0.0",
     "web-api-mongodb-connection-factory": "^1.1.0"
   },
   "devDependencies": {

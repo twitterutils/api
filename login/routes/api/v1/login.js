@@ -2,7 +2,7 @@ var rfr = require("rfr");
 var router = require("express").Router();
 var oauthFactory = rfr("login/lib/factories/oauth");
 var dbConnection3 = require("web-api-mongodb-connection-factory");
-var webError = require("web-api-error");
+var webError = rfr("lib/webApiError");
 var authRequestsDataService2 = rfr("login/lib/dal/authRequestsDataService2");
 var authRequestStarter = rfr("login/lib/controllers/authRequestStarter");
 

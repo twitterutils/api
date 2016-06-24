@@ -2,7 +2,7 @@ var rfr = require("rfr");
 var router = require("express").Router();
 var dbConnection = require("web-api-mongodb-connection-factory");
 var apiKey = rfr("lib/simpleApiKeyValidation");
-var webError = require("web-api-error");
+var webError = rfr("lib/webApiError");
 var notificationsDataService = rfr("notifications/lib/dal/notificationsDataService");
 var notifications = rfr("notifications/lib/controllers/notifications");
 

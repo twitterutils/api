@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var webError = require("web-api-error");
+var webError = rfr("lib/webApiError");
 var router = require("express").Router();
 var dbConnection3 = require("web-api-mongodb-connection-factory");
 var apiKey = rfr("lib/simpleApiKeyValidation");

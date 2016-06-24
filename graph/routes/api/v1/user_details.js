@@ -3,7 +3,7 @@ var router = require("express").Router();
 var dbConnectionFactory = require("web-api-mongodb-connection-factory");
 var twitterUserDataService = rfr("graph/lib/dal/twitterUserDataService");
 var apiKey = rfr("lib/simpleApiKeyValidation");
-var webError = require("web-api-error");
+var webError = rfr("lib/webApiError");
 var twitterUser = rfr("graph/lib/controllers/twitterUser");
 
 router.get("/:user_id/", (req, res, next) => {
