@@ -1,6 +1,6 @@
 var rfr = require("rfr");
 var router = require("express").Router();
-var dbConnection = require("web-api-mongodb-connection-factory");
+var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 var apiKey = rfr("lib/simpleApiKeyValidation");
 var webError = rfr("lib/webApiError");
 var notificationsDataService = rfr("notifications/lib/dal/notificationsDataService");
@@ -8,7 +8,7 @@ var notifications = rfr("notifications/lib/controllers/notifications");
 
 router.post("/", (req, res) => {
 
-    notifications(dbConnection, notificationsDataService, apiKey, webError)
+    notifications(dbConnectionFactory, notificationsDataService, apiKey, webError)
         .send(req.body, req.headers, res);
 });
 

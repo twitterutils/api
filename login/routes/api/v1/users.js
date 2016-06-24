@@ -1,13 +1,13 @@
 var rfr = require("rfr");
 var webError = rfr("lib/webApiError");
 var router = require("express").Router();
-var dbConnection3 = require("web-api-mongodb-connection-factory");
+var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 var apiKey = rfr("lib/simpleApiKeyValidation");
 var appUsersDataService = rfr("login/lib/dal/appUsersDataService");
 var users = rfr("login/lib/controllers/users");
 
 router.get("/", (req, res, next) => {
-    users(dbConnection3, appUsersDataService, apiKey, webError)
+    users(dbConnectionFactory, appUsersDataService, apiKey, webError)
         .all(req.headers.authorization, res);
 });
 

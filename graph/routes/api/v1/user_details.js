@@ -1,6 +1,6 @@
 var rfr = require("rfr");
 var router = require("express").Router();
-var dbConnectionFactory = require("web-api-mongodb-connection-factory");
+var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 var twitterUserDataService = rfr("graph/lib/dal/twitterUserDataService");
 var apiKey = rfr("lib/simpleApiKeyValidation");
 var webError = rfr("lib/webApiError");

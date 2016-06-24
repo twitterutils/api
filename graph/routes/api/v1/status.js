@@ -1,10 +1,10 @@
 var router = require("express").Router();
 var rfr = require("rfr");
 var cache = rfr("lib/theApiCache");
-var dbConnection = require("web-api-mongodb-connection-factory");
+var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 
 router.get("/", cache.longLived(), (req, res, next) => {
-    dbConnection(res, "GRAPH_DB_CONNECTION_STRING").then((db) => {
+    dbConnectionFactory(res, "GRAPH_DB_CONNECTION_STRING").then((db) => {
         console.log("status ok");
         res.send({status: "ok"});
     });

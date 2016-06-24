@@ -19,14 +19,13 @@
     "express": "~4.13.1",
     "foreman": "^1.4.1",
     "iso-date-str": "^1.0.0",
-    "mongodb": "^2.1.7",
+    "mongodb": "^2.1.18",
     "morgan": "~1.6.1",
     "oauth": "^0.9.14",
     "rfr": "^1.2.3",
     "shortid": "^2.2.4",
     "the-promise-factory": "^1.0.0",
-    "underscore": "^1.8.3",
-    "web-api-mongodb-connection-factory": "^1.1.0"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "jasmine": "^2.4.1",
