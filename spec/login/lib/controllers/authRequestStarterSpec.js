@@ -40,8 +40,8 @@ describe("authRequestStarter", function(){
             }
         };
 
-        var dbConnectionFactory = (r) => {
-            if (r === res){
+        var dbConnectionFactory = (r, dbConnectionKey) => {
+            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" && r === res){
                 return {
                     then: (successCallback) => {
                         successCallback(db);

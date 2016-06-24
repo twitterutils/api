@@ -20,7 +20,7 @@ module.exports = function (dbConnection3, authRequestsDataService2,
                         return;
                     }
 
-                    dbConnection3(response)
+                    dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
                         .then((db) => {
                             authRequestsDataService2(db)
                                 .create({

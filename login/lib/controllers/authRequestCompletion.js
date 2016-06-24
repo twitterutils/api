@@ -4,7 +4,7 @@ module.exports = function(oauth, dbConnection3,
         process: (authRequestId, oauth_verifier, response) => {
             if (!authRequestId) return webError.notFound(response, "AuthRequestId not provided");
 
-            dbConnection3(response).then(processOauthCallback);
+            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING").then(processOauthCallback);
 
             function processOauthCallback(db){
                 authRequestsDataService2(db)

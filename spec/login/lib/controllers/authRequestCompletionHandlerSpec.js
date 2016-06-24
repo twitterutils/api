@@ -22,8 +22,9 @@ describe("authRequestCompletion", function(){
         spyOn(webError, "unexpected");
         spyOn(webError, "logError");
 
-        dbConnectionFactory = function(res){
-            if (res === response){
+        dbConnectionFactory = function(res, dbConnectionKey){
+            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" &&
+                res === response){
                 return {
                     then: function(callback){
                         callback(db);

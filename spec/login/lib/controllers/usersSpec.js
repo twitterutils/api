@@ -29,8 +29,8 @@ describe("users", function(){
             }
         };
 
-        var dbConnection = (r) => {
-            if (r === res){
+        var dbConnection = (r, dbConnectionKey) => {
+            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" && r === res){
                 return {
                     then: (successCallback, errorCallback) =>{
                         successCallback(db);

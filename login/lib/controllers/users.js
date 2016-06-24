@@ -6,7 +6,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            dbConnection3(response)
+            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
                         .all()
@@ -23,7 +23,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            dbConnection3(response)
+            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
                         .first(userId)
