@@ -1,6 +1,6 @@
 var rfr = require("rfr");
 var promise = require("the-promise-factory");
-var appUsersDataService = rfr("lib/dal/appUsersDataService");
+var appUsersDataService = rfr("login/lib/dal/appUsersDataService");
 
 describe("appUsersDataService", function(){
     it("requires a database", function(){

@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var controller = rfr("lib/controllers/authRequestCompletion");
+var controller = rfr("login/lib/controllers/authRequestCompletion");
 
 describe("authRequestCompletion", function(){
     var response = "web Response";

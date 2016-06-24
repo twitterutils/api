@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var apiCallbackFactory = rfr("lib/helpers/apiCallback");
+var apiCallbackFactory = rfr("login/lib/helpers/apiCallback");
 
 module.exports = function(appUsersDataService, apiCallback) {
     if (!apiCallback) apiCallback = apiCallbackFactory;

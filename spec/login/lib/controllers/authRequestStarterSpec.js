@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var authRequestStarterFactory = rfr("lib/controllers/authRequestStarter");
+var authRequestStarterFactory = rfr("login/lib/controllers/authRequestStarter");
 
 describe("authRequestStarter", function(){
     var res = {

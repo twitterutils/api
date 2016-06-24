@@ -1,4 +1,3 @@
-var rfr = require("rfr");
 var shortidFactory = require("shortid");
 
 module.exports = function (dbConnection3, authRequestsDataService2,

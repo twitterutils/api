@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var apiCallback = rfr("lib/helpers/apiCallback");
+var apiCallback = rfr("login/lib/helpers/apiCallback");
 
 describe("apiCallback", function(){
     var responseStub = null;

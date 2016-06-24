@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var oauthFactory = rfr("lib/factories/oauth");
+var oauthFactory = rfr("login/lib/factories/oauth");
 
 describe("oauth", function(){
     beforeEach(function() {

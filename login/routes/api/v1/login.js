@@ -1,10 +1,10 @@
 var rfr = require("rfr");
 var router = require("express").Router();
-var oauthFactory = rfr("lib/factories/oauth");
+var oauthFactory = rfr("login/lib/factories/oauth");
 var dbConnection3 = require("web-api-mongodb-connection-factory");
 var webError = require("web-api-error");
-var authRequestsDataService2 = rfr("lib/dal/authRequestsDataService2");
-var authRequestStarter = rfr("lib/controllers/authRequestStarter");
+var authRequestsDataService2 = rfr("login/lib/dal/authRequestsDataService2");
+var authRequestStarter = rfr("login/lib/controllers/authRequestStarter");
 
 router.get("/", (req, res, next) => {
     authRequestStarter(

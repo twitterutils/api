@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var oauthAccessToken = rfr("lib/controllers/oauthAccessToken");
+var oauthAccessToken = rfr("login/lib/controllers/oauthAccessToken");
 
 describe("oauthAccessToken", function(){
     var response = "seeded response";

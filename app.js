@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use("/api/v1/status", rfr("routes/api/v1/status"));
-app.use("/api/v1/users", rfr("routes/api/v1/users"));
-app.use("/api/v1/user", rfr("routes/api/v1/user_details"));
-app.use("/api/v1/login", rfr("routes/api/v1/login"));
-app.use("/api/v1/auth/twitter_callback/", rfr("routes/api/v1/auth/twitter_callback"));
+app.use("/login/api/v1/status", rfr("login/routes/api/v1/status"));
+app.use("/login/api/v1/users", rfr("login/routes/api/v1/users"));
+app.use("/login/api/v1/user", rfr("login/routes/api/v1/user_details"));
+app.use("/login/api/v1/login", rfr("login/routes/api/v1/login"));
+app.use("/login/api/v1/auth/twitter_callback/", rfr("login/routes/api/v1/auth/twitter_callback"));
 
 
 // catch 404 and forward to error handler

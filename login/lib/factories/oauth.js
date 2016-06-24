@@ -7,7 +7,7 @@ module.exports = {
             urlAddendum = `/${authRequestId}/`
         }
 
-        var callbackUrl = `${process.env.TWITTER_CALLBACK_BASE}/api/v1/auth/twitter_callback${urlAddendum}`;
+        var callbackUrl = `${process.env.TWITTER_CALLBACK_BASE}/login/api/v1/auth/twitter_callback${urlAddendum}`;
 
         return new OAuth(
             "https://api.twitter.com/oauth/request_token",

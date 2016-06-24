@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var usersController = rfr("lib/controllers/users");
+var usersController = rfr("login/lib/controllers/users");
 
 describe("users", function(){
     var res = {

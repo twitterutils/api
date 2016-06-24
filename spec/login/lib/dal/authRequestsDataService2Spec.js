@@ -1,5 +1,5 @@
 var rfr = require("rfr");
-var authRequestsDataService = rfr("lib/dal/authRequestsDataService2");
+var authRequestsDataService = rfr("login/lib/dal/authRequestsDataService2");
 
 describe("authRequestsDataService", function(){
     it("requires a database", function(){
