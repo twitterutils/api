@@ -18,7 +18,14 @@ describe("notificationsDataService", function () {
                 if (collectionName === "notifications_details") {
                     return {
                         find: function(dbRequest){
-                            dbRequests.push(dbRequest);
+                            return {
+                                limit: function(count){
+                                    dbRequests.push({
+                                        userId: dbRequest.userId,
+                                        count: count
+                                    });
+                                }
+                            }
                         }
                     }
                 }
@@ -32,7 +39,7 @@ describe("notificationsDataService", function () {
                 .recentNotifications("333444", 10)
                 .then(() => {
                     expect(dbRequests).toEqual([
-                        {userId: "333444"}
+                        {userId: "333444", count: 10}
                     ]);
                     done();
                 });

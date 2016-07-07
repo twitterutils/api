@@ -8,7 +8,8 @@ module.exports = function (db) {
             return promise.create((fulfill, reject) => {
                 db
                     .collection("notifications_details")
-                    .find({userId: userId});
+                    .find({userId: userId})
+                    .limit(maxCount);
 
                 fulfill();
             });
