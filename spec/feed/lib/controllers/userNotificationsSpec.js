@@ -7,6 +7,7 @@ describe("userNotifications", function () {
         send: () => {}
     };
     var controller = null;
+    var notificationsDataService = null;
 
     beforeEach(function(){
         spyOn(res, "send");
@@ -37,8 +38,20 @@ describe("userNotifications", function () {
             }
         };
 
+        notificationsDataService = {
+            recentNotifications: function(){}
+        };
+        var notificationsDataServiceFactory = (pDb) => {
+            if (pDb === db){
+                return notificationsDataService;
+            }
+        };
+
         controller = userNotificationsController(
-            dbConnection, apiKey, webError
+            dbConnection,
+            notificationsDataServiceFactory,
+            apiKey,
+            webError
         );
     });
 
