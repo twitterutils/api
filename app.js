@@ -31,7 +31,7 @@ app.use("/notifications/api/v1/status", rfr("notifications/routes/api/v1/status"
 app.use("/notifications/api/v1/send", rfr("notifications/routes/api/v1/send_notification"));
 
 app.use("/feed/api/v1/status", rfr("notifications/routes/api/v1/status"));
-app.use("/feed/api/v1/recent", rfr("feed/routes/api/v1/recent_notifications"));
+app.use("/feed/api/v1/recentnotifications", rfr("feed/routes/api/v1/recent_notifications"));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
