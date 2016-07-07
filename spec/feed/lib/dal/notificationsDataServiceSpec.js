@@ -7,4 +7,35 @@ describe("notificationsDataService", function () {
             notificationsDataService();
         }).toThrow(new Error("A database is required"));
     });
+
+    var db = null;
+    var dbRequests = null;
+
+    beforeEach(function(){
+        dbRequests = [];
+        db = {
+            collection: function(collectionName){
+                if (collectionName === "notifications_details") {
+                    return {
+                        find: function(dbRequest){
+                            dbRequests.push(dbRequest);
+                        }
+                    }
+                }
+            }
+        };
+    })
+
+    describe("recentNotifications", function(){
+        it ("finds the notifications for the user", function(done){
+            notificationsDataService(db)
+                .recentNotifications("333444", 10)
+                .then(() => {
+                    expect(dbRequests).toEqual([
+                        {userId: "333444"}
+                    ]);
+                    done();
+                });
+        });
+    });
 });
