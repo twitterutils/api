@@ -249,6 +249,36 @@ curl 'http://localhost:8080/notifications/api/v1/send' -H 'Content-Type: applica
 {"success":true}
 ```
 
+### Feed - Recent Notifications  
+
+Retrieves the sorted list of the most recent notifications for a user. It expects a `SECRET_API_KEY` in order to prevent abuse.
+
+**Request**  
+
+```
+GET http://localhost:8080/feed/api/v1/recentnotifications/<user_id>/<max_count>/
+```
+
+Headers
+
+```
+Authorization: SECRET_API_KEY
+```
+
+**Response**  
+
+```json
+[
+    {"id":"576c82ad6a14de2400ea4dfe","type":"unfollow","userId":"29893096","details":{"target":3044090736}},
+    {"id":"5773f0938583b42400868cbb","type":"unfollow","userId":"29893096","details":{"target":4847284508}}
+]
+```
+
+```sh
+curl 'http://localhost:8080/feed/api/v1/recentnotifications/29893096/2' -H 'Authorization: SECRET_API_KEY'
+```
+
+
 
 ## Development
     npm run dev
