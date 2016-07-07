@@ -1,6 +1,8 @@
-module.exports = function () {
+module.exports = function (apiKey, webError) {
     return {
         recent: function(userId, maxCount, reqApiKey, response){
+            webError.unauthorized(response, "Unauthorized");
+
             console.log(
                 "recent notifications",
                 "twitter_user_id", userId,
