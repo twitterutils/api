@@ -11,9 +11,7 @@ module.exports = function (db) {
                     .find({userId: userId})
                     .limit(maxCount)
                     .toArray()
-                    .then((results) => {
-                        fulfill();
-                    }, reject);
+                    .then(fulfill, reject);
             });
         }
     };
