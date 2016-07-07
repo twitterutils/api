@@ -26,7 +26,20 @@ describe("userNotifications", function () {
             }
         };
 
-        controller = userNotificationsController(apiKey, webError);
+        var dbConnection = (r, dbConnectionKey) => {
+            if (dbConnectionKey === "NOTIFICATIONS_DB_CONNECTION_STRING" &&
+                r === res){
+                return {
+                    then: (successCallback, errorCallback) =>{
+                        successCallback(db);
+                    }
+                };
+            }
+        };
+
+        controller = userNotificationsController(
+            dbConnection, apiKey, webError
+        );
     });
 
     describe("recent", function(){
