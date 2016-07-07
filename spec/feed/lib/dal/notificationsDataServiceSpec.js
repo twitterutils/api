@@ -10,6 +10,8 @@ describe("notificationsDataService", function () {
 
     var db = null;
     var dbRequests = null;
+    var seededDbResult = null;
+    var seededDbError = null;
 
     beforeEach(function(){
         dbRequests = [];
@@ -20,10 +22,14 @@ describe("notificationsDataService", function () {
                         find: function(dbRequest){
                             return {
                                 limit: function(count){
-                                    dbRequests.push({
-                                        userId: dbRequest.userId,
-                                        count: count
-                                    });
+                                    return {
+                                        toArray: function(){
+                                            dbRequests.push({
+                                                userId: dbRequest.userId,
+                                                count: count
+                                            });
+                                        }
+                                    }
                                 }
                             }
                         }
