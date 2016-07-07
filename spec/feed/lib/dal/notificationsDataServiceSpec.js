@@ -1,4 +1,5 @@
 var rfr = require("rfr");
+var promise = require("the-promise-factory");
 var notificationsDataService = rfr("feed/lib/dal/notificationsDataService");
 
 describe("notificationsDataService", function () {
@@ -27,6 +28,11 @@ describe("notificationsDataService", function () {
                                             dbRequests.push({
                                                 userId: dbRequest.userId,
                                                 count: count
+                                            });
+
+                                            return promise.create((fulfill, reject) => {
+                                                if (seededDbError) return reject(seededDbError);
+                                                fulfill(seededDbResult);
                                             });
                                         }
                                     }
