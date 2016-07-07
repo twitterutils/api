@@ -19,30 +19,36 @@ describe("notificationsDataService", function () {
         db = {
             collection: function(collectionName){
                 if (collectionName === "notifications_details") {
-                    return {
-                        find: function(dbRequest){
-                            return {
-                                limit: function(count){
-                                    return {
-                                        toArray: function(){
-                                            dbRequests.push({
-                                                userId: dbRequest.userId,
-                                                count: count
-                                            });
+                    return collection;
+                }
+            }
+        };
 
-                                            return promise.create((fulfill, reject) => {
-                                                if (seededDbError) return reject(seededDbError);
-                                                fulfill(seededDbResult);
-                                            });
-                                        }
-                                    }
-                                }
+        var collection = {
+            find: function(dbRequest){
+                return {
+                    limit: function(count){
+                        return {
+                            toArray: function(){
+                                dbRequests.push({
+                                    userId: dbRequest.userId,
+                                    count: count
+                                });
+
+                                return findResult();
                             }
                         }
                     }
                 }
             }
         };
+
+        function findResult(){
+            return promise.create((fulfill, reject) => {
+                if (seededDbError) return reject(seededDbError);
+                fulfill(seededDbResult);
+            });
+        }
     })
 
     describe("recentNotifications", function(){
@@ -53,6 +59,17 @@ describe("notificationsDataService", function () {
                     expect(dbRequests).toEqual([
                         {userId: "333444", count: 10}
                     ]);
+                    done();
+                });
+        });
+
+        it ("return the notifications for the user", function(done){
+            seededDbResult = ["aaa", "bbb"];
+
+            notificationsDataService(db)
+                .recentNotifications("333444", 10)
+                .then((result) => {
+                    expect(result).toBe(seededDbResult);
                     done();
                 });
         });
