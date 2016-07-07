@@ -17,6 +17,7 @@ module.exports = function (
                         .then((notifications) => {
                             var result = notifications.map((n) => {
                                 return {
+                                    id: n._id.toString(),
                                     type: n.type,
                                     userId: n.userId,
                                     details: n.details

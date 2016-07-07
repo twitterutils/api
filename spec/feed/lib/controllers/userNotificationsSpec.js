@@ -80,35 +80,42 @@ describe("userNotifications", function () {
         });
 
         it ("returns each notification", function(){
+            var seededNotifications = [
+                {
+                    "_id": {
+                        "$oid": "576c82ad6a14de2400ea4dfe"
+                    },
+                    "type": "unfollow",
+                    "userId": "29893096",
+                    "details": {
+                        "target": 3044090736
+                    },
+                    "version": 1,
+                    "creation_time_str": "2016-06-24T00:45:33.573Z"
+                },
+                {
+                    "_id": {
+                        "$oid": "5773f0938583b42400868cbb"
+                    },
+                    "type": "unfollow",
+                    "userId": "29893096",
+                    "details": {
+                        "target": 4847284508
+                    },
+                    "version": 1,
+                    "creation_time_str": "2016-06-29T16:00:19.942Z"
+                }
+            ];
+            seededNotifications.forEach((n) => {
+                n._id.toString = function(){
+                    return n._id['$oid'];
+                }
+            })
+
             spyOn(notificationsDataService, "recentNotifications").and.callFake((userId, maxCount) => {
                 return {
                     then: (successCallback, errorCallback) => {
-                        successCallback([
-                            {
-                                "_id": {
-                                    "$oid": "576c82ad6a14de2400ea4dfe"
-                                },
-                                "type": "unfollow",
-                                "userId": "29893096",
-                                "details": {
-                                    "target": 3044090736
-                                },
-                                "version": 1,
-                                "creation_time_str": "2016-06-24T00:45:33.573Z"
-                            },
-                            {
-                                "_id": {
-                                    "$oid": "5773f0938583b42400868cbb"
-                                },
-                                "type": "unfollow",
-                                "userId": "29893096",
-                                "details": {
-                                    "target": 4847284508
-                                },
-                                "version": 1,
-                                "creation_time_str": "2016-06-29T16:00:19.942Z"
-                            }
-                        ]);
+                        successCallback(seededNotifications);
                     }
                 };
             });
@@ -117,6 +124,7 @@ describe("userNotifications", function () {
 
             expect(res.send).toHaveBeenCalledWith([
                 {
+                    "id": "576c82ad6a14de2400ea4dfe",
                     "type": "unfollow",
                     "userId": "29893096",
                     "details": {
@@ -124,6 +132,7 @@ describe("userNotifications", function () {
                     }
                 },
                 {
+                    "id": "5773f0938583b42400868cbb",
                     "type": "unfollow",
                     "userId": "29893096",
                     "details": {
