@@ -78,5 +78,59 @@ describe("userNotifications", function () {
                 res, "Db Error reading notifications", "seeded error"
             );
         });
+
+        it ("returns each notification", function(){
+            spyOn(notificationsDataService, "recentNotifications").and.callFake((userId, maxCount) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback([
+                            {
+                                "_id": {
+                                    "$oid": "576c82ad6a14de2400ea4dfe"
+                                },
+                                "type": "unfollow",
+                                "userId": "29893096",
+                                "details": {
+                                    "target": 3044090736
+                                },
+                                "version": 1,
+                                "creation_time_str": "2016-06-24T00:45:33.573Z"
+                            },
+                            {
+                                "_id": {
+                                    "$oid": "5773f0938583b42400868cbb"
+                                },
+                                "type": "unfollow",
+                                "userId": "29893096",
+                                "details": {
+                                    "target": 4847284508
+                                },
+                                "version": 1,
+                                "creation_time_str": "2016-06-29T16:00:19.942Z"
+                            }
+                        ]);
+                    }
+                };
+            });
+
+            controller.recent("1234555", 100, "my secret key", res);
+
+            expect(res.send).toHaveBeenCalledWith([
+                {
+                    "type": "unfollow",
+                    "userId": "29893096",
+                    "details": {
+                        "target": 3044090736
+                    }
+                },
+                {
+                    "type": "unfollow",
+                    "userId": "29893096",
+                    "details": {
+                        "target": 4847284508
+                    }
+                }
+            ]);
+        })
     });
 });

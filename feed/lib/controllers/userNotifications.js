@@ -14,7 +14,16 @@ module.exports = function (
                 .then((db) => {
                     notificationsDataService(db)
                         .recentNotifications()
-                        .then(null, (err) => {
+                        .then((notifications) => {
+                            var result = notifications.map((n) => {
+                                return {
+                                    type: n.type,
+                                    userId: n.userId,
+                                    details: n.details
+                                }
+                            });
+                            response.send(result);
+                        }, (err) => {
                             webError.unexpected(response, "Db Error reading notifications", err);
                         });
                 });
