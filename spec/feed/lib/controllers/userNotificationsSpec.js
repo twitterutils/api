@@ -131,6 +131,21 @@ describe("userNotifications", function () {
                     }
                 }
             ]);
+        });
+
+        it ("reads the correct notifications", function(){
+            spyOn(notificationsDataService, "recentNotifications").and.callFake((userId, maxCount) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback([]);
+                    }
+                };
+            });
+
+            controller.recent("1234555", 100, "my secret key", res);
+
+            expect(notificationsDataService.recentNotifications)
+                .toHaveBeenCalledWith("1234555", 100);
         })
     });
 });

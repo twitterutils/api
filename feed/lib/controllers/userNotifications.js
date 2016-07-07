@@ -13,7 +13,7 @@ module.exports = function (
             dbConnectionFactory(response, "NOTIFICATIONS_DB_CONNECTION_STRING")
                 .then((db) => {
                     notificationsDataService(db)
-                        .recentNotifications()
+                        .recentNotifications(userId, maxCount)
                         .then((notifications) => {
                             var result = notifications.map((n) => {
                                 return {
