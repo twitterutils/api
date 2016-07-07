@@ -56,5 +56,16 @@ describe("notificationsDataService", function () {
                     done();
                 });
         });
+
+        it ("fails on db failure", function(done){
+            seededDbError = "db error";
+
+            notificationsDataService(db)
+                .recentNotifications("333444", 10)
+                .then(null, (err) => {
+                    expect(err).toBe(seededDbError);
+                    done();
+                });
+        })
     });
 });

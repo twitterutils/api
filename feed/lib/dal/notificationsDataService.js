@@ -10,9 +10,10 @@ module.exports = function (db) {
                     .collection("notifications_details")
                     .find({userId: userId})
                     .limit(maxCount)
-                    .toArray();
-
-                fulfill();
+                    .toArray()
+                    .then((results) => {
+                        fulfill();
+                    }, reject);
             });
         }
     };
