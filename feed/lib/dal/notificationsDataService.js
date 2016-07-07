@@ -9,7 +9,7 @@ module.exports = function (db) {
                 db
                     .collection("notifications_details")
                     .find({userId: userId})
-                    .limit(maxCount)
+                    .limit(parseInt(maxCount))
                     .toArray()
                     .then(fulfill, reject);
             });
