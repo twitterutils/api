@@ -6,6 +6,7 @@ describe("userNotifications", function () {
         name: "my web response",
         send: () => {}
     };
+    var db = "my database";
     var controller = null;
     var notificationsDataService = null;
 
@@ -60,6 +61,22 @@ describe("userNotifications", function () {
             controller.recent("1234555", 100, "invalid key", res);
 
             expect(webError.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
+        });
+
+        it("returns unexpected when notifications could not be read", function(){
+            spyOn(notificationsDataService, "recentNotifications").and.callFake((userId, maxCount) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        errorCallback("seeded error");
+                    }
+                };
+            });
+
+            controller.recent("1234555", 100, "my secret key", res);
+
+            expect(webError.unexpected).toHaveBeenCalledWith(
+                res, "Db Error reading notifications", "seeded error"
+            );
         });
     });
 });
