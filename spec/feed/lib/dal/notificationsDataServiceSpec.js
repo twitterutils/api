@@ -54,7 +54,7 @@ describe("notificationsDataService", function () {
     describe("recentNotifications", function(){
         it ("finds the notifications for the user", function(done){
             notificationsDataService(db)
-                .recentNotifications("333444", "10")
+                .recentNotifications(333444, "10")
                 .then(() => {
                     expect(dbRequests).toEqual([
                         {userId: "333444", count: 10}
