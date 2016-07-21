@@ -9,8 +9,8 @@ module.exports = function(db){
 
                 var queryParameters = {
                     $or: [
-                        {target: twitterUserId},
-                        {originator: twitterUserId}
+                        {target: twitterUserId.toString()},
+                        {originator: twitterUserId.toString()}
                     ]
                 };
 

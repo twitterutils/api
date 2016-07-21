@@ -54,10 +54,10 @@ describe("twitterChangesDataService", function(){
             seededResult = "seeded result";
 
             twitterChangesDataService(db)
-                .changesFor("my id")
+                .changesFor(55555)
                 .then((result) => {
                     expect(dbRequests).toEqual([
-                        {$or: [{target: "my id"}, {originator: "my id"}]}
+                        {$or: [{target: "55555"}, {originator: "55555"}]}
                     ]);
                     expect(result).toBe("seeded result");
                     done();
@@ -68,10 +68,10 @@ describe("twitterChangesDataService", function(){
             seededError = "seeded error";
 
             twitterChangesDataService(db)
-                .changesFor("my id")
+                .changesFor(55555)
                 .then(() => {}, (err) => {
                     expect(dbRequests).toEqual([
-                        {$or: [{target: "my id"}, {originator: "my id"}]}
+                        {$or: [{target: "55555"}, {originator: "55555"}]}
                     ]);
                     expect(err).toBe("seeded error");
                     done();
