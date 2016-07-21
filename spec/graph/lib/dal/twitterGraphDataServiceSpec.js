@@ -97,11 +97,11 @@ describe("twitterGraphDataService", function(){
             twitterGraphDataService(db)
                 .graphsForUserCreatedAfter({
                     _id: "my bson id",
-                    id: "twitter id"
+                    id: 22222
                 })
                 .then((result) => {
                     expect(dbRequests).toEqual([
-                        {id: "twitter id", _id: {$gt: "my bson id"}}
+                        {id: "22222", _id: {$gt: "my bson id"}}
                     ]);
                     expect(result).toBe("seeded result");
                     done();
@@ -114,11 +114,11 @@ describe("twitterGraphDataService", function(){
             twitterGraphDataService(db)
                 .graphsForUserCreatedAfter({
                     _id: "my bson id",
-                    id: "twitter id"
+                    id: 111111
                 })
                 .then(() => {}, (err) => {
                     expect(dbRequests).toEqual([
-                        {id: "twitter id", _id: {$gt: "my bson id"}}
+                        {id: "111111", _id: {$gt: "my bson id"}}
                     ]);
                     expect(err).toBe("seeded error");
                     done();

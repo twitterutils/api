@@ -25,7 +25,7 @@ module.exports = function(db){
                 db
                     .collection("crawler_twitter_graph_history")
                     .find({
-                        id: twitterGraph.id,
+                        id: twitterGraph.id.toString(),
                         _id: {
                             $gt: twitterGraph._id
                         }
