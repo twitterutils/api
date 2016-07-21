@@ -14,7 +14,7 @@ module.exports = function (db, dateSvc) {
                     .collection("notifications_details")
                     .insert({
                         type: notification.type,
-                        userId: notification.userId,
+                        userId: notification.userId.toString(),
                         details: notification.details,
                         version: MODEL_VERSION,
                         creation_time_str: dateSvc()

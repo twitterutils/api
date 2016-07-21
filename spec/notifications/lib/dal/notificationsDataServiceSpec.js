@@ -52,7 +52,7 @@ describe("notificationsDataService", function () {
 
         dataService.save({
             type: "unfollow",
-            userId: "12345",
+            userId: 12345,
             details: {
                 target: "66667"
             }
@@ -67,7 +67,7 @@ describe("notificationsDataService", function () {
             callback("something went wrong");
         });
 
-        dataService.save({})
+        dataService.save({userId: 11111})
             .then(null, (error) => {
                 expect(error).toBe("something went wrong");
                 done();
