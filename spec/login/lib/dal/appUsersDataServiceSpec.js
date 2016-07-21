@@ -32,7 +32,7 @@ describe("appUsersDataService", function(){
 
     describe("create", function(){
         var targetUser = {
-            twitter_user_id: "unique id",
+            twitter_user_id: 11111111,
             twitter_screen_name: "at lolo",
             oauth_access_token: "secret value",
             oauth_access_token_secret: "super secret value"
@@ -62,7 +62,7 @@ describe("appUsersDataService", function(){
                 .then((result) => {
                     expect(dbRequests).toEqual([{
                         version: 1.0,
-                        twitter_user_id: "unique id",
+                        twitter_user_id: "11111111",
                         twitter_screen_name: "at lolo",
                         oauth_access_token: "secret value",
                         oauth_access_token_secret: "super secret value",
@@ -82,7 +82,7 @@ describe("appUsersDataService", function(){
                 .then(() => {}, (err) => {
                     expect(dbRequests).toEqual([{
                         version: 1.0,
-                        twitter_user_id: "unique id",
+                        twitter_user_id: "11111111",
                         twitter_screen_name: "at lolo",
                         oauth_access_token: "secret value",
                         oauth_access_token_secret: "super secret value",
@@ -109,9 +109,9 @@ describe("appUsersDataService", function(){
             seededResult = "seeded result";
 
             appUsersDataService(db)
-                .first("my id")
+                .first(222222)
                 .then((result) => {
-                    expect(dbRequests).toEqual([{ twitter_user_id: "my id" }]);
+                    expect(dbRequests).toEqual([{ twitter_user_id: "222222" }]);
                     expect(result).toBe("seeded result");
                     done();
                 });
@@ -121,9 +121,9 @@ describe("appUsersDataService", function(){
             seededError = "seeded error";
 
             appUsersDataService(db)
-                .first("my id")
+                .first(222222)
                 .then(() => {}, (err) => {
-                    expect(dbRequests).toEqual([{ twitter_user_id: "my id" }]);
+                    expect(dbRequests).toEqual([{ twitter_user_id: "222222" }]);
                     expect(err).toBe("seeded error");
                     done();
                 });
@@ -203,9 +203,9 @@ describe("appUsersDataService", function(){
             seededResult = "seeded result";
 
             appUsersDataService(db, () => { return "right now"; })
-                .updateCredentials("my id", credentials)
+                .updateCredentials(555555, credentials)
                 .then((result) => {
-                    expect(dbRequests).toEqual([{ twitter_user_id: "my id" }]);
+                    expect(dbRequests).toEqual([{ twitter_user_id: "555555" }]);
                     expect(updateRequests).toEqual([
                         {
                             $set: { 
@@ -224,9 +224,9 @@ describe("appUsersDataService", function(){
             seededError = "seeded error";
 
             appUsersDataService(db, () => { return "right now"; })
-                .updateCredentials("my id", credentials)
+                .updateCredentials(888888, credentials)
                 .then(() => {}, (err) => {
-                    expect(dbRequests).toEqual([{ twitter_user_id: "my id" }]);
+                    expect(dbRequests).toEqual([{ twitter_user_id: "888888" }]);
                     expect(updateRequests).toEqual([
                         {
                             $set: { 

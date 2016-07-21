@@ -9,6 +9,7 @@ module.exports = function(db, dateSvc){
 
     return {
         create: function(appUser){
+            appUser.twitter_user_id = appUser.twitter_user_id.toString();
             appUser.version = MODEL_VERSION;
             appUser.creation_time_str = dateSvc();
             appUser.modified_time_str = dateSvc();
@@ -16,13 +17,13 @@ module.exports = function(db, dateSvc){
             return getPromise("insert", appUser);
         },
         first: function(id){
-            return getPromise("findOne", {twitter_user_id: id});
+            return getPromise("findOne", {twitter_user_id: id.toString()});
         },
         updateCredentials: function(id, credentials){
             return promise.create((fulfill, reject) => {
                 getCollection()
                     .updateOne(
-                        {twitter_user_id: id},
+                        {twitter_user_id: id.toString()},
                         {
                             $set: { 
                                 oauth_access_token: credentials.oauth_access_token,
