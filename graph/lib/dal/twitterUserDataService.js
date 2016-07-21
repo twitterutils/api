@@ -9,7 +9,7 @@ module.exports = function(db){
                 db
                     .collection("crawler_twitter_graph")
                     .findOne(
-                        {id: twitterUserId},
+                        {id: twitterUserId.toString()},
                         (err, result) => {
                             if (err) {
                                 reject(err);

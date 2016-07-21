@@ -44,9 +44,9 @@ describe("twitterUserDataService", function(){
             seededResult = "seeded result";
 
             twitterUserDataService(db)
-                .first("my id")
+                .first(3333333)
                 .then((result) => {
-                    expect(dbRequests).toEqual([{ id: "my id" }]);
+                    expect(dbRequests).toEqual([{ id: "3333333" }]);
                     expect(result).toBe("seeded result");
                     done();
                 });
@@ -56,9 +56,9 @@ describe("twitterUserDataService", function(){
             seededError = "seeded error";
 
             twitterUserDataService(db)
-                .first("my id")
+                .first(3333333)
                 .then(() => {}, (err) => {
-                    expect(dbRequests).toEqual([{ id: "my id" }]);
+                    expect(dbRequests).toEqual([{ id: "3333333" }]);
                     expect(err).toBe("seeded error");
                     done();
                 });
