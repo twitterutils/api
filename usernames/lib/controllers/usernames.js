@@ -4,16 +4,18 @@ module.exports = function (
     apiKey,
     webError) {
     return {
-        find: function(userIds, reqApiKey, response){
+        find: function(userIdsStr, reqApiKey, response){
             if (!apiKey.isValid(reqApiKey)){
                 webError.unauthorized(response, "Unauthorized");
                 return;
             }
 
+            var userIds = userIdsStr.split(",");
+
             dbConnectionFactory(response, "USERNAMES_DB_CONNECTION_STRING")
                 .then((db) => {
                     usernamesDataService(db)
-                        .find(userIds || [])
+                        .find(userIds)
                         .then((usernames) => {
                             var result = usernames.map((u) => {
                                 return {

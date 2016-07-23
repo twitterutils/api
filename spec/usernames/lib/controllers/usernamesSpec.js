@@ -58,7 +58,7 @@ describe("usernamesController", function () {
 
     describe("find", function(){
         it("returns unauthorized when the api key is invalid", function(){
-            controller.find([11111, 33333], "invalid key", res);
+            controller.find("11111,33333", "invalid key", res);
 
             expect(webError.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
         });
@@ -72,7 +72,7 @@ describe("usernamesController", function () {
                 };
             });
 
-            controller.find([11111, 33333], "my secret key", res);
+            controller.find("11111,33333", "my secret key", res);
 
             expect(webError.unexpected).toHaveBeenCalledWith(
                 res, "Db Error reading notifications", "seeded error"
@@ -101,7 +101,7 @@ describe("usernamesController", function () {
                 };
             });
 
-            controller.find([11111, 33333], "my secret key", res);
+            controller.find("11111,33333", "my secret key", res);
 
             expect(res.send).toHaveBeenCalledWith([
                 {
@@ -124,10 +124,10 @@ describe("usernamesController", function () {
                 };
             });
 
-            controller.find(["1234555", "5555"], "my secret key", res);
+            controller.find("1234555,5555", "my secret key", res);
 
             expect(usernamesDataService.find)
                 .toHaveBeenCalledWith(["1234555", "5555"]);
-        })
+        });
     });
 });
