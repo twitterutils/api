@@ -1,4 +1,5 @@
 var rfr = require("rfr");
+var promise = require("the-promise-factory");
 var usernamesDataService = rfr("usernames/lib/dal/usernamesDataService");
 
 describe("usernamesDataService", function(){
@@ -46,5 +47,30 @@ describe("usernamesDataService", function(){
                 }
             }
         };
+    });
+
+    it("finds usernames", function(done){
+        seededResult = "seeded result";
+
+        usernamesDataService(db)
+            .find([55555, 44444, 66666])
+            .then((result) => {
+                expect(dbRequests).toEqual([
+                    {id: {$in: ["55555", "44444", "66666"]}}
+                ]);
+                expect(result).toBe("seeded result");
+                done();
+            });
+    });
+
+    it("fails on db error", function(done){
+        seededError = "error reading usernames";
+
+        usernamesDataService(db)
+            .find([55555, 44444, 66666])
+            .then(null, (err) => {
+                expect(err).toBe("error reading usernames");
+                done();
+            });
     });
 });
