@@ -36,6 +36,7 @@ app.use("/feed/api/v1/recentnotifications", rfr("feed/routes/api/v1/recent_notif
 
 
 app.use("/usernames/api/v1/status", rfr("usernames/routes/api/v1/status"));
+app.use("/usernames/api/v1/find", rfr("usernames/routes/api/v1/usernames_list"));
 
 
 // catch 404 and forward to error handler
