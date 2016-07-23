@@ -62,5 +62,21 @@ describe("usernamesController", function () {
 
             expect(webError.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
         });
+
+        it("returns unexpected when usernames could not be read", function(){
+            spyOn(usernamesDataService, "find").and.callFake((userIds) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        errorCallback("seeded error");
+                    }
+                };
+            });
+
+            controller.find([11111, 33333], "my secret key", res);
+
+            expect(webError.unexpected).toHaveBeenCalledWith(
+                res, "Db Error reading notifications", "seeded error"
+            );
+        });
     });
 });

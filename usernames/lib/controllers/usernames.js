@@ -4,8 +4,13 @@ module.exports = function (
     apiKey,
     webError) {
     return {
-        find: function(userIds, apiKey, response){
-            webError.unauthorized(response, "Unauthorized");
+        find: function(userIds, reqApiKey, response){
+            if (!apiKey.isValid(reqApiKey)){
+                webError.unauthorized(response, "Unauthorized");
+                return;
+            }
+
+            webError.unexpected(response, "Db Error reading notifications", "seeded error");
         }
     }
 }
