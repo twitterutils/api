@@ -78,5 +78,56 @@ describe("usernamesController", function () {
                 res, "Db Error reading notifications", "seeded error"
             );
         });
+
+        it ("returns each user", function(){
+            spyOn(usernamesDataService, "find").and.callFake((userIds) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback([
+                            {
+                                "id": "11111",
+                                "userName": "Oatmeal",
+                                "version": 1,
+                                "creation_time_str": "2016-06-24T00:45:33.573Z"
+                            },
+                            {
+                                "id": "33333",
+                                "userName": "xkcd",
+                                "version": 1,
+                                "creation_time_str": "2016-06-29T16:00:19.942Z"
+                            }
+                        ]);
+                    }
+                };
+            });
+
+            controller.find([11111, 33333], "my secret key", res);
+
+            expect(res.send).toHaveBeenCalledWith([
+                {
+                    "userId": "11111",
+                    "userName": "Oatmeal"
+                },
+                {
+                    "userId": "33333",
+                    "userName": "xkcd"
+                }
+            ]);
+        });
+
+        it ("reads the correct usernames", function(){
+            spyOn(usernamesDataService, "find").and.callFake((userIds) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback([]);
+                    }
+                };
+            });
+
+            controller.find(["1234555", "5555"], "my secret key", res);
+
+            expect(usernamesDataService.find)
+                .toHaveBeenCalledWith(["1234555", "5555"]);
+        })
     });
 });

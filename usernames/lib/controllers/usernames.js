@@ -1,6 +1,6 @@
 module.exports = function (
     dbConnectionFactory,
-    notificationsDataService,
+    usernamesDataService,
     apiKey,
     webError) {
     return {
@@ -10,7 +10,23 @@ module.exports = function (
                 return;
             }
 
-            webError.unexpected(response, "Db Error reading notifications", "seeded error");
+            dbConnectionFactory(response, "USERNAMES_DB_CONNECTION_STRING")
+                .then((db) => {
+                    usernamesDataService(db)
+                        .find(userIds || [])
+                        .then((usernames) => {
+                            var result = usernames.map((u) => {
+                                return {
+                                    userId: u.id,
+                                    userName: u.userName
+                                };
+                            })
+
+                            response.send(result);
+                        }, (err) => {
+                            webError.unexpected(response, "Db Error reading notifications", err);
+                        })
+                });
         }
     }
 }
