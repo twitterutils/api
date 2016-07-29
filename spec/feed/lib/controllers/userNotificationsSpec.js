@@ -10,6 +10,8 @@ describe("userNotifications", function () {
     var controller = null;
     var notificationsDataService = null;
 
+    var webError = null;
+
     beforeEach(function(){
         spyOn(res, "send");
 
