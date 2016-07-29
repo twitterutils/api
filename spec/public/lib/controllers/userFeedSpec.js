@@ -12,6 +12,8 @@ describe("userFeed", function () {
     var readDbConnectionString = null;
     var seededDbError = null;
 
+    var userFeedDataServiceStub = null;
+
     beforeEach(function(){
         spyOn(res, "send");
 
@@ -34,9 +36,21 @@ describe("userFeed", function () {
                     fulfill(db);
                 }
             }
+        };
+
+        userFeedDataServiceStub = {
+            read: () => {}
         }
 
-        controller = userFeedController(dbConnectionFactoryStub);
+        var userFeedDataServiceFactory = (pDb) => {
+            if (pDb !== db){
+                return jasmine.getEnv().fail("invalid invocation");
+            }
+
+            return userFeedDataServiceStub;
+        }
+
+        controller = userFeedController(dbConnectionFactoryStub, userFeedDataServiceFactory);
     })
 
     it ("opens a db connection", function(){
@@ -44,4 +58,12 @@ describe("userFeed", function () {
 
         expect(readDbConnectionString).toBe("FEEDBUILDER_DB_CONNECTION_STRING");
     });
+
+    it ("reads the user feed", function(){
+        spyOn(userFeedDataServiceStub, "read");
+
+        controller.read("lolo", res);
+
+        expect(userFeedDataServiceStub.read).toHaveBeenCalledWith("lolo");
+    })
 })
