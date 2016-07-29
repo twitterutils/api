@@ -8,8 +8,10 @@ module.exports = function (db) {
             return promise.create((fulfill, reject) => {
                 db
                     .collection("feed_list")
-                    .findOne({}, (err, result) => {
-                        reject(err);
+                    .findOne({userName: userName}, (err, result) => {
+                        if (err) return reject(err);
+
+                        fulfill();
                     });
             });
         }

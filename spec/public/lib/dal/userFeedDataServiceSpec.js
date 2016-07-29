@@ -42,9 +42,20 @@ describe("userFeedDataService", function(){
         findSeededError = "db error";
 
         dataService
-            .read("333444")
+            .read("pepitin")
             .then(null, (err) => {
                 expect(err).toBe(findSeededError);
+                done();
+            });
+    })
+
+    it ("reads the correct feed", function(done){
+        dataService
+            .read("pepitin")
+            .then(() => {
+                expect(dbRequests).toEqual([
+                    {userName: "pepitin"}
+                ]);
                 done();
             });
     })
