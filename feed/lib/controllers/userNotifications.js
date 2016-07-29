@@ -20,7 +20,8 @@ module.exports = function (
                                     id: n._id.toString(),
                                     type: n.type,
                                     userId: n.userId,
-                                    details: n.details
+                                    details: n.details,
+                                    creation_time_str: n.creation_time_str
                                 }
                             });
                             response.send(result);

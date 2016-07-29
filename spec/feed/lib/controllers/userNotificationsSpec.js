@@ -131,7 +131,8 @@ describe("userNotifications", function () {
                     "userId": "29893096",
                     "details": {
                         "target": 3044090736
-                    }
+                    },
+                    "creation_time_str": "2016-06-24T00:45:33.573Z"
                 },
                 {
                     "id": "5773f0938583b42400868cbb",
@@ -139,7 +140,8 @@ describe("userNotifications", function () {
                     "userId": "29893096",
                     "details": {
                         "target": 4847284508
-                    }
+                    },
+                    "creation_time_str": "2016-06-29T16:00:19.942Z"
                 }
             ]);
         });
