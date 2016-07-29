@@ -111,6 +111,22 @@ describe("userFeed", function () {
         );
     });
 
+    it("returns notFound when the feed could not be found", function(){
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (successCallback, errorCallback) => {
+                    successCallback(null);
+                }
+            };
+        });
+
+        controller.read("1234555", res);
+
+        expect(webError.notFound).toHaveBeenCalledWith(
+            res, "User not found"
+        );
+    });
+
     it ("returns the user feed", function(){
         spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
             return {

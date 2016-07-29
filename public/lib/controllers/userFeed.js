@@ -6,6 +6,11 @@ module.exports = function (dbConnectionFactory, userFeedDataService, webError) {
                     userFeedDataService(db)
                         .read(userName)
                         .then((feedItems) => {
+                            if (!feedItems){
+                                webError.notFound(response, "User not found");
+                                return;
+                            }
+
                             var result = feedItems.map((i) => {
                                 return {
                                     id: i.id,
