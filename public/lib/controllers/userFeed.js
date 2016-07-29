@@ -5,8 +5,18 @@ module.exports = function (dbConnectionFactory, userFeedDataService, webError) {
                 .then((db) => {
                     userFeedDataService(db)
                         .read(userName)
-                        .then((feed) => {
-
+                        .then((feedItems) => {
+                            var result = feedItems.map((i) => {
+                                return {
+                                    id: i.id,
+                                    type: i.type,
+                                    userId: i.userId,
+                                    details: i.details,
+                                    userName: i.userName,
+                                    url: i.url
+                                };
+                            });
+                            response.send(result);
                         }, (err) => {
                             webError.unexpected(response, "Db Error reading user feed", err);
                         });

@@ -71,7 +71,7 @@ describe("userFeed", function () {
         spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
             return {
                 then: (fulfill, reject) => {
-                    fulfill({});
+                    fulfill([]);
                 }
             }
         });
@@ -85,7 +85,7 @@ describe("userFeed", function () {
         spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
             return {
                 then: (fulfill, reject) => {
-                    fulfill({});
+                    fulfill([]);
                 }
             }
         });
@@ -109,5 +109,69 @@ describe("userFeed", function () {
         expect(webError.unexpected).toHaveBeenCalledWith(
             res, "Db Error reading user feed", "seeded error"
         );
+    });
+
+    it ("returns the user feed", function(){
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (fulfill, reject) => {
+                    fulfill([
+                        {
+                            "id": "576c82ad6a14de2400ea4dfe",
+                            "type": "unfollow",
+                            "userId": "29893096",
+                            "details": {
+                                "target": "3044090736",
+                                "userName": "TddApps",
+                                "url": "https://twitter.com/@TddApps"
+                            },
+                            "userName": "camilin87",
+                            "url": "https://twitter.com/@camilin87"
+                        },
+                        {
+                            "id": "5773f0938583b42400868cbb",
+                            "type": "unfollow",
+                            "userId": "29893096",
+                            "details": {
+                                "target": "4847284508",
+                                "userName": "programmer_rep",
+                                "url": "https://twitter.com/@programmer_rep"
+                            },
+                            "userName": "camilin87",
+                            "url": "https://twitter.com/@camilin87"
+                        }
+                    ]);
+                }
+            }
+        });
+
+        controller.read("lolo", res);
+
+        expect(res.send).toHaveBeenCalledWith([
+            {
+                "id": "576c82ad6a14de2400ea4dfe",
+                "type": "unfollow",
+                "userId": "29893096",
+                "details": {
+                    "target": "3044090736",
+                    "userName": "TddApps",
+                    "url": "https://twitter.com/@TddApps"
+                },
+                "userName": "camilin87",
+                "url": "https://twitter.com/@camilin87"
+            },
+            {
+                "id": "5773f0938583b42400868cbb",
+                "type": "unfollow",
+                "userId": "29893096",
+                "details": {
+                    "target": "4847284508",
+                    "userName": "programmer_rep",
+                    "url": "https://twitter.com/@programmer_rep"
+                },
+                "userName": "camilin87",
+                "url": "https://twitter.com/@camilin87"
+            }
+        ]);
     });
 })
