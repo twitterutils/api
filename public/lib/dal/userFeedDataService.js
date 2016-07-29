@@ -5,10 +5,13 @@ module.exports = function (db) {
 
     return {
         read: (userName) => {
+            var searchString = (userName || "");
+            var regex = new RegExp(["^", searchString, "$"].join(""), "i");
+
             return promise.create((fulfill, reject) => {
                 db
                     .collection("feed_list")
-                    .findOne({userName: userName}, (err, result) => {
+                    .findOne({userName: regex}, (err, result) => {
                         if (err) return reject(err);
 
                         fulfill(result.items);

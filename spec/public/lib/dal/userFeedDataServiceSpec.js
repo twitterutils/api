@@ -51,10 +51,10 @@ describe("userFeedDataService", function(){
 
     it ("reads the correct feed", function(done){
         dataService
-            .read("pepitin")
+            .read("pepiTin")
             .then(() => {
                 expect(dbRequests).toEqual([
-                    {userName: "pepitin"}
+                    {userName: /^pepiTin$/i}
                 ]);
                 done();
             });
