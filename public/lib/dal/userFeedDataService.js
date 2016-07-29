@@ -11,7 +11,7 @@ module.exports = function (db) {
                     .findOne({userName: userName}, (err, result) => {
                         if (err) return reject(err);
 
-                        fulfill();
+                        fulfill(result.items);
                     });
             });
         }

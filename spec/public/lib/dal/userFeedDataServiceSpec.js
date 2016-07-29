@@ -47,7 +47,7 @@ describe("userFeedDataService", function(){
                 expect(err).toBe(findSeededError);
                 done();
             });
-    })
+    });
 
     it ("reads the correct feed", function(done){
         dataService
@@ -58,5 +58,18 @@ describe("userFeedDataService", function(){
                 ]);
                 done();
             });
-    })
+    });
+
+    it ("returns the items from the feed", function(done){
+        findSeededResult = {
+            items: ["item1", "item2"]
+        };
+
+        dataService
+            .read("pepitin")
+            .then((result) => {
+                expect(result).toEqual(["item1", "item2"]);
+                done();
+            });
+    });
 })
