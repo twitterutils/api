@@ -13,9 +13,19 @@ describe("userFeed", function () {
     var seededDbError = null;
 
     var userFeedDataServiceStub = null;
+    var webError = null;
 
     beforeEach(function(){
         spyOn(res, "send");
+
+        webError = {
+            unauthorized: function(){},
+            unexpected: function(){},
+            notFound: function(){}
+        };
+        spyOn(webError, "unauthorized");
+        spyOn(webError, "unexpected");
+        spyOn(webError, "notFound");
 
         seededDbError = null;
         readDbConnectionString = null;
@@ -50,20 +60,54 @@ describe("userFeed", function () {
             return userFeedDataServiceStub;
         }
 
-        controller = userFeedController(dbConnectionFactoryStub, userFeedDataServiceFactory);
+        controller = userFeedController(
+            dbConnectionFactoryStub,
+            userFeedDataServiceFactory,
+            webError
+        );
     })
 
     it ("opens a db connection", function(){
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (fulfill, reject) => {
+                    fulfill({});
+                }
+            }
+        });
+
         controller.read("lolo", res);
 
         expect(readDbConnectionString).toBe("FEEDBUILDER_DB_CONNECTION_STRING");
     });
 
     it ("reads the user feed", function(){
-        spyOn(userFeedDataServiceStub, "read");
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (fulfill, reject) => {
+                    fulfill({});
+                }
+            }
+        });
 
         controller.read("lolo", res);
 
         expect(userFeedDataServiceStub.read).toHaveBeenCalledWith("lolo");
-    })
+    });
+
+    it("returns unexpected when notifications could not be read", function(){
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (successCallback, errorCallback) => {
+                    errorCallback("seeded error");
+                }
+            };
+        });
+
+        controller.read("1234555", res);
+
+        expect(webError.unexpected).toHaveBeenCalledWith(
+            res, "Db Error reading user feed", "seeded error"
+        );
+    });
 })
