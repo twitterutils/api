@@ -190,4 +190,18 @@ describe("userFeed", function () {
             }
         ]);
     });
+
+    it ("returns an empty feed", function(){
+        spyOn(userFeedDataServiceStub, "read").and.callFake((userName) => {
+            return {
+                then: (fulfill, reject) => {
+                    fulfill([]);
+                }
+            }
+        });
+
+        controller.read("lolo", res);
+
+        expect(res.send).toHaveBeenCalledWith([]);
+    });
 })
