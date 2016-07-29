@@ -142,7 +142,8 @@ describe("userFeed", function () {
                                 "url": "https://twitter.com/@TddApps"
                             },
                             "userName": "camilin87",
-                            "url": "https://twitter.com/@camilin87"
+                            "url": "https://twitter.com/@camilin87",
+                            "creation_time_str": "2016-06-24T00:45:33.573Z"
                         },
                         {
                             "id": "5773f0938583b42400868cbb",
@@ -154,7 +155,8 @@ describe("userFeed", function () {
                                 "url": "https://twitter.com/@programmer_rep"
                             },
                             "userName": "camilin87",
-                            "url": "https://twitter.com/@camilin87"
+                            "url": "https://twitter.com/@camilin87",
+                            "creation_time_str": "2016-06-24T00:45:33.573Z"
                         }
                     ]);
                 }
@@ -174,7 +176,8 @@ describe("userFeed", function () {
                     "url": "https://twitter.com/@TddApps"
                 },
                 "userName": "camilin87",
-                "url": "https://twitter.com/@camilin87"
+                "url": "https://twitter.com/@camilin87",
+                "creation_time_str": "2016-06-24T00:45:33.573Z"
             },
             {
                 "id": "5773f0938583b42400868cbb",
@@ -186,7 +189,8 @@ describe("userFeed", function () {
                     "url": "https://twitter.com/@programmer_rep"
                 },
                 "userName": "camilin87",
-                "url": "https://twitter.com/@camilin87"
+                "url": "https://twitter.com/@camilin87",
+                "creation_time_str": "2016-06-24T00:45:33.573Z"
             }
         ]);
     });

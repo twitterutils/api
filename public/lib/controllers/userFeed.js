@@ -18,7 +18,8 @@ module.exports = function (dbConnectionFactory, userFeedDataService, webError) {
                                     userId: i.userId,
                                     details: i.details,
                                     userName: i.userName,
-                                    url: i.url
+                                    url: i.url,
+                                    creation_time_str: i.creation_time_str
                                 };
                             });
                             response.send(result);
