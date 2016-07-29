@@ -39,6 +39,7 @@ app.use("/usernames/api/v1/status", rfr("usernames/routes/api/v1/status"));
 app.use("/usernames/api/v1/find", rfr("usernames/routes/api/v1/usernames_list"));
 
 
+app.use("/public/api/v1/status", rfr("public/routes/api/v1/status"));
 app.use("/public/api/v1/feed", rfr("public/routes/api/v1/user_feed"));
 
 
