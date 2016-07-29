@@ -14,7 +14,7 @@ module.exports = function (db) {
                     .findOne({userName: regex}, (err, result) => {
                         if (err) return reject(err);
 
-                        fulfill(result.items);
+                        fulfill((result || {}).items || null);
                     });
             });
         }

@@ -72,4 +72,15 @@ describe("userFeedDataService", function(){
                 done();
             });
     });
+
+    it ("returns null if the user is not found", function(done){
+        findSeededResult = null;
+
+        dataService
+            .read("pepitin")
+            .then((result) => {
+                expect(result).toBe(null);
+                done();
+            });
+    });
 })
