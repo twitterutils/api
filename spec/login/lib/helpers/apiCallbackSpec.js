@@ -26,10 +26,10 @@ describe("apiCallback", function(){
         });
 
         it("success redirects to the correct url", function(){
-            var actualResult = callback.success("myuser");
+            var actualResult = callback.success("myuser", "pepin");
 
             expect(actualResult).toBe(responseStub);
-            expect(redirectUrl).toBe("callback_url?user_id=myuser")
+            expect(redirectUrl).toBe("callback_url?user_id=myuser&screen_name=pepin")
         });
 
         it("error redirects to the correct url", function(){

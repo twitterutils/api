@@ -163,7 +163,7 @@ describe("oauthAccessToken", function(){
             }}
         );
 
-        expect(apiCallback.success).toHaveBeenCalledWith("twitter user");
+        expect(apiCallback.success).toHaveBeenCalledWith("twitter user", "@lolo");
         expect(console.log).toHaveBeenCalledWith("Authenticated User @lolo")
     });
 
@@ -250,7 +250,7 @@ describe("oauthAccessToken", function(){
             }
         );
 
-        expect(apiCallback.success).toHaveBeenCalledWith("twitter user");
+        expect(apiCallback.success).toHaveBeenCalledWith("twitter user", "@lolo");
         expect(console.log).toHaveBeenCalledWith("Authenticated User @lolo")
     });
 });

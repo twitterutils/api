@@ -50,7 +50,7 @@ module.exports = function(appUsersDataService, apiCallback) {
 
             function authenticationSuccess(){
                 console.log(`Authenticated User ${userInfo.screen_name}`);
-                callback.success(userInfo.user_id);
+                callback.success(userInfo.user_id, userInfo.screen_name);
             }
 
             function databaseError(err){

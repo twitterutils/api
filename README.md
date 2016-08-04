@@ -17,7 +17,7 @@ Authenticates Twitter users and stores their OAuth tokens to be used by [3-legge
 2. **Success**  
     On success the API will invoke the callback with the authenticated `user_id`
     ```
-    GET http://<YOUR_WEBSITE>/callback?user_id=<TWITTER_USER_ID>
+    GET http://<YOUR_WEBSITE>/callback?user_id=<TWITTER_USER_ID>&screen_name=<TWITTER_USER_NAME>
     ```
 3. **Error**  
     On error the API will invoke the callback with the `error` details.  
