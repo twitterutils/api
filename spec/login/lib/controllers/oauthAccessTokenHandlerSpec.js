@@ -194,7 +194,8 @@ describe("oauthAccessToken", function(){
         expect(appUsers.updateCredentials).toHaveBeenCalledWith(
             "twitter user", {
                 oauth_access_token: "token1",
-                oauth_access_token_secret: "secret1"
+                oauth_access_token_secret: "secret1",
+                disabled: false
             });
     });
 
