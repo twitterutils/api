@@ -7,7 +7,6 @@ var notificationsDataService = rfr("notifications/lib/dal/notificationsDataServi
 var notifications = rfr("notifications/lib/controllers/notifications");
 
 router.post("/", (req, res) => {
-
     notifications(dbConnectionFactory, notificationsDataService, apiKey, webError)
         .send(req.body, req.headers, res);
 });
