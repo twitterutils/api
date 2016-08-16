@@ -186,7 +186,11 @@ describe("appUsersDataService", function(){
 
     describe("updateCredentials", function(){
         var updateRequests = null;
-        var credentials = {oauth_access_token: "token", oauth_access_token_secret: "secret"};
+        var credentials = {
+            oauth_access_token: "token",
+            oauth_access_token_secret: "secret",
+            disabled: false
+        };
 
         beforeEach(function(){
             updateRequests = [];
@@ -211,6 +215,7 @@ describe("appUsersDataService", function(){
                             $set: { 
                                 oauth_access_token: "token",
                                 oauth_access_token_secret: "secret",
+                                disabled: false,
                                 modified_time_str: "right now"
                             }
                         }
@@ -232,6 +237,7 @@ describe("appUsersDataService", function(){
                             $set: { 
                                 oauth_access_token: "token",
                                 oauth_access_token_secret: "secret",
+                                disabled: false,
                                 modified_time_str: "right now"
                             }
                         }

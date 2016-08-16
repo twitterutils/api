@@ -28,6 +28,7 @@ module.exports = function(db, dateSvc){
                             $set: { 
                                 oauth_access_token: credentials.oauth_access_token,
                                 oauth_access_token_secret: credentials.oauth_access_token_secret,
+                                disabled: credentials.disabled,
                                 modified_time_str: dateSvc()
                             }
                         }, 
