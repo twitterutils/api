@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/login/api/v1/status", rfr("login/routes/api/v1/status"));
 app.use("/login/api/v1/users", rfr("login/routes/api/v1/users"));
 app.use("/login/api/v1/user", rfr("login/routes/api/v1/user_details"));
+app.use("/login/api/v1/disable", rfr("login/routes/api/v1/disable_user"));
 app.use("/login/api/v1/login", rfr("login/routes/api/v1/login"));
 app.use("/login/api/v1/auth/twitter_callback/", rfr("login/routes/api/v1/auth/twitter_callback"));
 

@@ -41,6 +41,9 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                             webError.unexpected(response, "Db Error finding users", err);
                         });
                 });
+        },
+        disable: (userId, reqApiKey, response) => {
+            webError.unauthorized(response, "test");
         }
     };
 };
