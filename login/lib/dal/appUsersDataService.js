@@ -5,7 +5,7 @@ module.exports = function(db, dateSvc){
     if (!db) throw new Error("A database is required");
     if (!dateSvc) dateSvc = isoDateStr;
 
-    var MODEL_VERSION = 1.0;
+    var MODEL_VERSION = 1.1;
 
     return {
         create: function(appUser){

@@ -61,7 +61,7 @@ describe("appUsersDataService", function(){
                 .create(targetUser)
                 .then((result) => {
                     expect(dbRequests).toEqual([{
-                        version: 1.0,
+                        version: 1.1,
                         twitter_user_id: "11111111",
                         twitter_screen_name: "at lolo",
                         oauth_access_token: "secret value",
@@ -81,7 +81,7 @@ describe("appUsersDataService", function(){
                 .create(targetUser)
                 .then(() => {}, (err) => {
                     expect(dbRequests).toEqual([{
-                        version: 1.0,
+                        version: 1.1,
                         twitter_user_id: "11111111",
                         twitter_screen_name: "at lolo",
                         oauth_access_token: "secret value",
