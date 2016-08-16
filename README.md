@@ -76,12 +76,38 @@ Here's the curl equivalent
 curl 'http://localhost:8080/login/api/v1/user/29893096' -H 'Authorization: SECRET_API_KEY'
 ```
 
+### Login - Disable  
+Disables the specified `user_id`. It expects a `SECRET_API_KEY` in order to prevent abuse.
+
+Url `http://localhost:8080/login/api/v1/disable`
+
+Headers
+
+```
+Content-Type: application/json
+Authorization: SECRET_API_KEY
+```
+
+Body
+
+```json
+{
+    "userid": "2746028153"
+}
+```
+
+Here's the curl equivalent
+
+```sh
+curl 'http://localhost:8080/login/api/v1/disable' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"userid": "2746028153"}'
+```
 
 **Response**  
 
 ```json
-{"oauth_access_token":"supersecret","oauth_access_token_secret":"extrasecret"}
+{"success": true}
 ```
+
 
 ### Graph - User Details  
 Retrieves the most recent graph details for the specified `user_id`. It expects a `SECRET_API_KEY` in order to prevent abuse.
