@@ -32,7 +32,8 @@ module.exports = function(appUsersDataService, apiCallback) {
                         twitter_user_id: userInfo.user_id,
                         twitter_screen_name: userInfo.screen_name,
                         oauth_access_token: oauthResponseInfo.access_token,
-                        oauth_access_token_secret: oauthResponseInfo.access_token_secret
+                        oauth_access_token_secret: oauthResponseInfo.access_token_secret,
+                        disabled: false
                     })
                     .then(authenticationSuccess, databaseError);
             }

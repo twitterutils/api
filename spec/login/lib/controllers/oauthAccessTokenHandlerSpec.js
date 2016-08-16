@@ -117,7 +117,8 @@ describe("oauthAccessToken", function(){
             twitter_user_id: "twitter user",
             twitter_screen_name: "@lolo",
             oauth_access_token: "token1",
-            oauth_access_token_secret: "secret1"
+            oauth_access_token_secret: "secret1",
+            disabled: false
         });
     });
 
