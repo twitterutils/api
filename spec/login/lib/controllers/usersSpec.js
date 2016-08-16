@@ -84,6 +84,22 @@ describe("users", function(){
 
             expect(res.send).toHaveBeenCalledWith("all my users");
         });
+
+        it("reads only the enabled users", function(){
+            var filteredUsersQuery = null;
+            spyOn(appUsers, "all").and.callFake((query) => {
+                filteredUsersQuery = query;
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback("all my users");
+                    }
+                };
+            });
+
+            controller.all("my secret key", res);
+
+            expect(filteredUsersQuery).toEqual({disabled: false});
+        });
     });
 
     describe("details", function(){

@@ -9,7 +9,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
             dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
-                        .all()
+                        .all({disabled: false})
                         .then((dbUsers) => {
                             response.send(dbUsers);
                         }, (err) => {
