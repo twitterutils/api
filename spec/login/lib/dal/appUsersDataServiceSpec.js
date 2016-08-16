@@ -131,9 +131,13 @@ describe("appUsersDataService", function(){
     });
 
     describe("all", function(){
+        var queryParameter = null;
+
         beforeEach(function(){
+            queryParameter = null;
             collection = {
-                find: function(){
+                find: function(query){
+                    queryParameter = query;
                     return {
                         toArray: function(){
                             return promise.create((fulfill, reject) => {
@@ -168,6 +172,25 @@ describe("appUsersDataService", function(){
                         {id: "id1", user_name: "name1"},
                         {id: "id2", user_name: "name2"}
                     ]);
+                    expect(queryParameter).toEqual({});
+                    done();
+                });
+        });
+
+        it("can filter the result set", function(done){
+            seededResult = [
+                {twitter_user_id: "id1", twitter_screen_name: "name1", dont_care: "lalala"},
+                {twitter_user_id: "id2", twitter_screen_name: "name2", dont_care: "lalala"}
+            ];
+
+            appUsersDataService(db)
+                .all({disabled: false})
+                .then((result) => {
+                    expect(result).toEqual([
+                        {id: "id1", user_name: "name1"},
+                        {id: "id2", user_name: "name2"}
+                    ]);
+                    expect(queryParameter).toEqual({disabled: false});
                     done();
                 });
         });

@@ -42,10 +42,14 @@ module.exports = function(db, dateSvc){
                         });
             });
         },
-        all: function(){
+        all: function(queryParameter){
+            if (!queryParameter) {
+                queryParameter = {};
+            }
+
             return promise.create((fulfill, reject) => {
                 getCollection()
-                    .find()
+                    .find(queryParameter)
                     .toArray()
                     .then((dbUsers) => {
                         var result = dbUsers.map((user) => {
