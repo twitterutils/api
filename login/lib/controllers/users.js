@@ -43,7 +43,27 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 });
         },
         disable: (userId, reqApiKey, response) => {
-            webError.unauthorized(response, "test");
+            if (!apiKey.isValid(reqApiKey)){
+                webError.unauthorized(response, "Unauthorized");
+                return;
+            }
+
+            var updatedCredentials = {
+                disabled: true,
+                oauth_access_token: null,
+                oauth_access_token_secret: null
+            };
+
+            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
+                .then((db) => {
+                    appUsersDataService(db)
+                        .updateCredentials(userId, updatedCredentials)
+                        .then(() => {
+                            response.send({success: true });
+                        }, (err) => {
+                            webError.unexpected(response, "Db Error updating users", err);
+                        });
+                });
         }
     };
 };

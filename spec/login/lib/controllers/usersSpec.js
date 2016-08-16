@@ -41,7 +41,8 @@ describe("users", function(){
 
         appUsers = {
             all: function(){},
-            first: function(){}
+            first: function(){},
+            updateCredentials: function(){}
         };
         var appUsersFactory = (pDb) => {
             if (pDb === db){
@@ -167,4 +168,71 @@ describe("users", function(){
             });
         });
     });
+
+    describe("disable", function(){
+        it("returns unauthorized when the api key is invalid", function(){
+            controller.disable("my user", "invalid key", res);
+
+            expect(webError.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
+        });
+
+        it("disables the correct user", function(){
+            var disableParams = null;
+
+            spyOn(appUsers, "updateCredentials").and.callFake((userId, credentials) => {
+                disableParams = {
+                    userId: userId,
+                    credentials: credentials
+                };
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback(null);
+                    }
+                };
+            });
+
+            controller.disable("my user", "my secret key", res);
+
+            expect(disableParams).toEqual({
+                userId: "my user",
+                credentials: {
+                    oauth_access_token: null,
+                    oauth_access_token_secret: null,
+                    disabled: true
+                }
+            });
+        });
+
+        it("returns success when user was disabled", function(){
+            spyOn(appUsers, "updateCredentials").and.callFake((userId, credentials) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        successCallback(null);
+                    }
+                };
+            });
+
+            controller.disable("my user", "my secret key", res);
+
+            expect(res.send).toHaveBeenCalledWith({
+                success: true
+            });
+        });
+
+        it("returns unexpected when user could not be disabled", function(){
+            spyOn(appUsers, "updateCredentials").and.callFake((userId, credentials) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        errorCallback("seeded error");
+                    }
+                };
+            });
+
+            controller.disable("my user", "my secret key", res);
+
+            expect(webError.unexpected).toHaveBeenCalledWith(
+                res, "Db Error updating users", "seeded error"
+            );
+        });
+    })
 });
