@@ -115,7 +115,7 @@ Retrieves the most recent graph details for the specified `user_id`. It expects 
 **Request**  
 
 ```
-GET http://localhost:8080/graph/api/v1/user/<user_id>/
+GET http://localhost:8080/secure/graph/api/v1/user/<user_id>/
 ```
 
 Headers
@@ -139,7 +139,7 @@ Authorization: SECRET_API_KEY
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/graph/api/v1/user/29893096' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/graph/api/v1/user/29893096' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ### Graph - Graph Details  
@@ -148,7 +148,7 @@ Retrieves the graph details for the specified `graph_id`. It expects a `SECRET_A
 **Request**  
 
 ```
-GET http://localhost:8080/graph/api/v1/graph/<graph_id>/
+GET http://localhost:8080/secure/graph/api/v1/graph/<graph_id>/
 ```
 
 Headers
@@ -172,7 +172,7 @@ Authorization: SECRET_API_KEY
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/graph/api/v1/graph/7e0d64a0-3868-11e6-ab2b-25ecfcf673fe' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/graph/api/v1/graph/7e0d64a0-3868-11e6-ab2b-25ecfcf673fe' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ### Graph - User Changes  
@@ -181,7 +181,7 @@ Retrieves the sorted list of **ALL** the changes related to the specified `user_
 **Request**  
 
 ```
-GET http://localhost:8080/graph/api/v1/changes/<user_id>/
+GET http://localhost:8080/secure/graph/api/v1/changes/<user_id>/
 ```
 
 Headers
@@ -204,7 +204,7 @@ Authorization: SECRET_API_KEY
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/graph/api/v1/changes/29893096' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/graph/api/v1/changes/29893096' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ### Graph - Recent Changes  
@@ -214,7 +214,7 @@ Retrieves the sorted list of the changes **AFTER** the specified `graph_id` as l
 **Request**  
 
 ```
-GET http://localhost:8080/graph/api/v1/recentchanges/<graph_id>/
+GET http://localhost:8080/secure/graph/api/v1/recentchanges/<graph_id>/
 ```
 
 Headers
@@ -235,7 +235,7 @@ Authorization: SECRET_API_KEY
 ```
 
 ```sh
-curl 'http://localhost:8080/graph/api/v1/recentchanges/7e0d64a0-3868-11e6-ab2b-25ecfcf673fe' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/graph/api/v1/recentchanges/7e0d64a0-3868-11e6-ab2b-25ecfcf673fe' -H 'Authorization: SECRET_API_KEY'
 ```
 
 

@@ -22,10 +22,10 @@ app.use("/secure/login/api/v1/auth/twitter_callback/", rfr("secure/login/routes/
 
 
 app.use("/secure/graph/api/v1/status", rfr("secure/graph/routes/api/v1/status"));
-app.use("/graph/api/v1/graph", rfr("secure/graph/routes/api/v1/graph_details"));
-app.use("/graph/api/v1/user", rfr("secure/graph/routes/api/v1/user_details"));
-app.use("/graph/api/v1/changes", rfr("secure/graph/routes/api/v1/user_changes_list"));
-app.use("/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/recent_changes_list"));
+app.use("/secure/graph/api/v1/graph", rfr("secure/graph/routes/api/v1/graph_details"));
+app.use("/secure/graph/api/v1/user", rfr("secure/graph/routes/api/v1/user_details"));
+app.use("/secure/graph/api/v1/changes", rfr("secure/graph/routes/api/v1/user_changes_list"));
+app.use("/secure/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/recent_changes_list"));
 
 
 app.use("/secure/notifications/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
