@@ -12,7 +12,7 @@ Authenticates Twitter users and stores their OAuth tokens to be used by [3-legge
 1. **Request a login**  
     The API requires a callback that will be invoked after the login operation finishes.  
     ```
-    GET /login/api/v1/login?callback=http://<YOUR_WEBSITE>/callback
+    GET /secure/login/api/v1/login?callback=http://<YOUR_WEBSITE>/callback
     ```
 2. **Success**  
     On success the API will invoke the callback with the authenticated `user_id`
@@ -33,7 +33,7 @@ Retrieves the list of authenticated users. It expects a `SECRET_API_KEY` in orde
 **Request**  
 
 ```
-GET /login/api/v1/users/
+GET /secure/login/api/v1/users/
 ```
 
 Headers
@@ -45,7 +45,7 @@ Authorization: SECRET_API_KEY
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/login/api/v1/users' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/login/api/v1/users' -H 'Authorization: SECRET_API_KEY'
 ```
 
 
@@ -61,7 +61,7 @@ Retrieves the authentication credentials for the specified `user_id`. It expects
 **Request**  
 
 ```
-GET http://localhost:8080/login/api/v1/user/<user_id>/
+GET http://localhost:8080/secure/login/api/v1/user/<user_id>/
 ```
 
 Headers
@@ -73,13 +73,13 @@ Authorization: SECRET_API_KEY
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/login/api/v1/user/29893096' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/login/api/v1/user/29893096' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ### Login - Disable  
 Disables the specified `user_id`. It expects a `SECRET_API_KEY` in order to prevent abuse.
 
-Url `http://localhost:8080/login/api/v1/disable`
+Url `http://localhost:8080/secure/login/api/v1/disable`
 
 Headers
 
@@ -99,7 +99,7 @@ Body
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/login/api/v1/disable' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"userid": "2746028153"}'
+curl 'http://localhost:8080/secure/login/api/v1/disable' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"userid": "2746028153"}'
 ```
 
 **Response**  

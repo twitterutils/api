@@ -13,30 +13,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use("/login/api/v1/status", rfr("secure/login/routes/api/v1/status"));
-app.use("/login/api/v1/users", rfr("secure/login/routes/api/v1/users"));
-app.use("/login/api/v1/user", rfr("secure/login/routes/api/v1/user_details"));
-app.use("/login/api/v1/disable", rfr("secure/login/routes/api/v1/disable_user"));
-app.use("/login/api/v1/login", rfr("secure/login/routes/api/v1/login"));
-app.use("/login/api/v1/auth/twitter_callback/", rfr("secure/login/routes/api/v1/auth/twitter_callback"));
+app.use("/secure/login/api/v1/status", rfr("secure/login/routes/api/v1/status"));
+app.use("/secure/login/api/v1/users", rfr("secure/login/routes/api/v1/users"));
+app.use("/secure/login/api/v1/user", rfr("secure/login/routes/api/v1/user_details"));
+app.use("/secure/login/api/v1/disable", rfr("secure/login/routes/api/v1/disable_user"));
+app.use("/secure/login/api/v1/login", rfr("secure/login/routes/api/v1/login"));
+app.use("/secure/login/api/v1/auth/twitter_callback/", rfr("secure/login/routes/api/v1/auth/twitter_callback"));
 
 
-app.use("/graph/api/v1/status", rfr("secure/graph/routes/api/v1/status"));
+app.use("/secure/graph/api/v1/status", rfr("secure/graph/routes/api/v1/status"));
 app.use("/graph/api/v1/graph", rfr("secure/graph/routes/api/v1/graph_details"));
 app.use("/graph/api/v1/user", rfr("secure/graph/routes/api/v1/user_details"));
 app.use("/graph/api/v1/changes", rfr("secure/graph/routes/api/v1/user_changes_list"));
 app.use("/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/recent_changes_list"));
 
 
-app.use("/notifications/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
+app.use("/secure/notifications/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
 app.use("/notifications/api/v1/send", rfr("secure/notifications/routes/api/v1/send_notification"));
 
 
-app.use("/feed/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
+app.use("/secure/feed/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
 app.use("/feed/api/v1/recentnotifications", rfr("secure/feed/routes/api/v1/recent_notifications"));
 
 
-app.use("/usernames/api/v1/status", rfr("secure/usernames/routes/api/v1/status"));
+app.use("/secure/usernames/api/v1/status", rfr("secure/usernames/routes/api/v1/status"));
 app.use("/usernames/api/v1/find", rfr("secure/usernames/routes/api/v1/usernames_list"));
 
 
