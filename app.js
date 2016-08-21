@@ -28,6 +28,11 @@ app.use("/secure/graph/api/v1/changes", rfr("secure/graph/routes/api/v1/user_cha
 app.use("/secure/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/recent_changes_list"));
 
 
+// app.use("/secure/crawler/api/v1/status", rfr("secure/crawler/routes/api/v1/status"));
+// app.use("/secure/crawler/api/v1/schedule", rfr("secure/crawler/routes/api/v1/scheduled_users_list"));
+// app.use("/secure/crawler/api/v1/updateuser", rfr("secure/crawler/routes/api/v1/update_user_scheduled_time"));
+
+
 app.use("/secure/notifications/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
 app.use("/secure/notifications/api/v1/send", rfr("secure/notifications/routes/api/v1/send_notification"));
 
