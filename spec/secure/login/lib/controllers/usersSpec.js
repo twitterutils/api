@@ -196,8 +196,6 @@ describe("users", function(){
             expect(disableParams).toEqual({
                 userId: "my user",
                 credentials: {
-                    oauth_access_token: null,
-                    oauth_access_token_secret: null,
                     disabled: true
                 }
             });

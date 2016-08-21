@@ -48,16 +48,10 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            var updatedCredentials = {
-                disabled: true,
-                oauth_access_token: null,
-                oauth_access_token_secret: null
-            };
-
             dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
-                        .updateCredentials(userId, updatedCredentials)
+                        .updateCredentials(userId, {disabled: true})
                         .then(() => {
                             response.send({success: true });
                         }, (err) => {
