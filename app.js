@@ -29,7 +29,7 @@ app.use("/secure/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/re
 
 
 app.use("/secure/notifications/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
-app.use("/notifications/api/v1/send", rfr("secure/notifications/routes/api/v1/send_notification"));
+app.use("/secure/notifications/api/v1/send", rfr("secure/notifications/routes/api/v1/send_notification"));
 
 
 app.use("/secure/feed/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));

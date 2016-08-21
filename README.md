@@ -242,7 +242,7 @@ curl 'http://localhost:8080/secure/graph/api/v1/recentchanges/7e0d64a0-3868-11e6
 ### Notifications - Send Notification  
 Sends a notification to the specified `user_id`. It expects a `SECRET_API_KEY` in order to prevent abuse.
 
-Url `http://localhost:8080/notifications/api/v1/send`
+Url `http://localhost:8080/secure/notifications/api/v1/send`
 
 Headers
 
@@ -266,7 +266,7 @@ Body
 Here's the curl equivalent
 
 ```sh
-curl 'http://localhost:8080/notifications/api/v1/send' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"type": "unfollow", "userid": "29893096", "details": {"target": 9526722}}'
+curl 'http://localhost:8080/secure/notifications/api/v1/send' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"type": "unfollow", "userid": "29893096", "details": {"target": 9526722}}'
 ```
 
 **Response**  
