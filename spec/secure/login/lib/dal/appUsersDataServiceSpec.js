@@ -269,5 +269,28 @@ describe("appUsersDataService", function(){
                     done();
                 });
         });
+
+        it("sets only the values explicitely specified", function(done){
+            seededResult = "seeded result";
+            credentials = {
+                disabled: false
+            };
+
+            appUsersDataService(db, () => { return "right now"; })
+                .updateCredentials(555555, credentials)
+                .then((result) => {
+                    expect(dbRequests).toEqual([{ twitter_user_id: "555555" }]);
+                    expect(updateRequests).toEqual([
+                        {
+                            $set: {
+                                disabled: false,
+                                modified_time_str: "right now"
+                            }
+                        }
+                    ]);
+                    expect(result).toBe("seeded result");
+                    done();
+                });
+        });
     });
 });

@@ -20,17 +20,17 @@ module.exports = function(db, dateSvc){
             return getPromise("findOne", {twitter_user_id: id.toString()});
         },
         updateCredentials: function(id, credentials){
+            if (!credentials) {
+                credentials = {};
+            }
+            credentials.modified_time_str = dateSvc();
+
             return promise.create((fulfill, reject) => {
                 getCollection()
                     .updateOne(
                         {twitter_user_id: id.toString()},
                         {
-                            $set: { 
-                                oauth_access_token: credentials.oauth_access_token,
-                                oauth_access_token_secret: credentials.oauth_access_token_secret,
-                                disabled: credentials.disabled,
-                                modified_time_str: dateSvc()
-                            }
+                            $set: credentials
                         }, 
                         (err, result) => {
                             if (err) {
