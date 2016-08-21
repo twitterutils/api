@@ -37,7 +37,7 @@ app.use("/secure/feed/api/v1/recentnotifications", rfr("secure/feed/routes/api/v
 
 
 app.use("/secure/usernames/api/v1/status", rfr("secure/usernames/routes/api/v1/status"));
-app.use("/usernames/api/v1/find", rfr("secure/usernames/routes/api/v1/usernames_list"));
+app.use("/secure/usernames/api/v1/find", rfr("secure/usernames/routes/api/v1/usernames_list"));
 
 
 app.use("/public/api/v1/status", rfr("public/routes/api/v1/status"));

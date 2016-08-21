@@ -309,7 +309,7 @@ curl 'http://localhost:8080/secure/feed/api/v1/recentnotifications/29893096/2' -
 Retrieves a list of usernames for the specified comma-separated user ids. It expects a `SECRET_API_KEY` in order to prevent abuse.  
 
 ```
-GET http://localhost:8080/usernames/api/v1/find/<user_id1>,<user_id2>,<user_idn>
+GET http://localhost:8080/secure/usernames/api/v1/find/<user_id1>,<user_id2>,<user_idn>
 ```
 
 Headers
@@ -334,7 +334,7 @@ Authorization: SECRET_API_KEY
 ```
 
 ```sh
-curl 'http://localhost:8080/usernames/api/v1/find/2746028153,50457174' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/usernames/api/v1/find/2746028153,50457174' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ## Development
