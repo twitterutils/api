@@ -282,7 +282,7 @@ Retrieves the sorted list of the most recent notifications for a user. It expect
 **Request**  
 
 ```
-GET http://localhost:8080/feed/api/v1/recentnotifications/<user_id>/<max_count>/
+GET http://localhost:8080/secure/feed/api/v1/recentnotifications/<user_id>/<max_count>/
 ```
 
 Headers
@@ -301,7 +301,7 @@ Authorization: SECRET_API_KEY
 ```
 
 ```sh
-curl 'http://localhost:8080/feed/api/v1/recentnotifications/29893096/2' -H 'Authorization: SECRET_API_KEY'
+curl 'http://localhost:8080/secure/feed/api/v1/recentnotifications/29893096/2' -H 'Authorization: SECRET_API_KEY'
 ```
 
 ### Usernames - List  

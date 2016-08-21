@@ -33,7 +33,7 @@ app.use("/secure/notifications/api/v1/send", rfr("secure/notifications/routes/ap
 
 
 app.use("/secure/feed/api/v1/status", rfr("secure/notifications/routes/api/v1/status"));
-app.use("/feed/api/v1/recentnotifications", rfr("secure/feed/routes/api/v1/recent_notifications"));
+app.use("/secure/feed/api/v1/recentnotifications", rfr("secure/feed/routes/api/v1/recent_notifications"));
 
 
 app.use("/secure/usernames/api/v1/status", rfr("secure/usernames/routes/api/v1/status"));
