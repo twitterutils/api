@@ -89,4 +89,11 @@ describe("userSchedule", function () {
 
         controller = userScheduleController(dbConnection, userScheduleDataServiceFactory, apiKeyStub, webErrorStub);
     })
+
+    it("returns unauthorized when the api key is invalid", function(){
+        controller.update(111111, "invalid", res);
+
+        expect(webErrorStub.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
+        expect(openedConnections).toBe(0);
+    });
 })
