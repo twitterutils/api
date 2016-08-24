@@ -26,6 +26,11 @@ module.exports = function(db, dateSvc) {
                         handleResult(fulfill, reject)
                     );
             });
+        },
+        first: function(userId){
+            return promise.create((fulfill, reject) => {
+                reject("something went wrong")
+            })
         }
     }
 

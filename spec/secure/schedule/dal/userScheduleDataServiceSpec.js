@@ -63,6 +63,7 @@ describe("userScheduleDataService", function() {
                     }
                 };
 
+
                 var keysExpected = Object.keys(expectedValue["$set"]).sort();
                 var keysActual = Object.keys(value["$set"]).sort();
 
@@ -86,6 +87,20 @@ describe("userScheduleDataService", function() {
             dataService.update(55555, {field1: "value1", field2: "value2"})
                 .then((result) => {
                     expect(result).toEqual({success: true});
+                    done();
+                });
+        });
+    })
+
+    describe("read", function(){
+        it("fails when read fails", function(done){
+            spyOn(collectionStub, "findOne").and.callFake((criteria, callback) => {
+                callback("something went wrong");
+            });
+
+            dataService.first(777777)
+                .then(null, (error) => {
+                    expect(error).toBe("something went wrong");
                     done();
                 });
         });
