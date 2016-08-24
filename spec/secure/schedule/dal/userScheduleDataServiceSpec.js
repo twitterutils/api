@@ -47,5 +47,47 @@ describe("userScheduleDataService", function() {
                     done();
                 });
         })
+
+        it("inserts new values", function(done){
+            spyOn(collectionStub, "updateOne").and.callFake((criteria, value, options, callback) => {
+                if (JSON.stringify(criteria) !== JSON.stringify({id: "55555"}) ||
+                    JSON.stringify(options) !== JSON.stringify({upsert: true})) return;
+
+                var expectedValue = {
+                    $set: {
+                        id: "55555",
+                        field1: "value1",
+                        field2: "value2",
+                        version: 1.0,
+                        modified_time_str: "now1"
+                    }
+                };
+
+                var keysExpected = Object.keys(expectedValue["$set"]).sort();
+                var keysActual = Object.keys(value["$set"]).sort();
+
+                if (JSON.stringify(keysExpected) === JSON.stringify(keysActual)){
+                    var objectsMatch = true;
+                    keysExpected.forEach((k) => {
+                        if (expectedValue["$set"][k] !== value["$set"][k]){
+                            objectsMatch = false;
+                        }
+                    });
+
+                    if (objectsMatch){
+                        callback(null, {success: true});
+                        return;
+                    }
+                }
+
+                jasmine.getEnv().fail("invalid invocation");
+            });
+
+            dataService.update(55555, {field1: "value1", field2: "value2"})
+                .then((result) => {
+                    expect(result).toEqual({success: true});
+                    done();
+                });
+        });
     })
 })
