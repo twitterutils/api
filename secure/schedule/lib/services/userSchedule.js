@@ -9,8 +9,17 @@ module.exports = function (userScheduleDataService) {
                     .first(userId)
                     .then((scheduleInfo) => {
 
+                        var updatedStatus = {
+                            readCount: scheduleInfo.readCount + 1
+                        };
+
+                        console.log("Updating-User-Schedule",
+                            "userId=", userId,
+                            "readCount", updatedStatus.readCount
+                        );
+
                         userScheduleDataService
-                            .update(userId, scheduleInfo)
+                            .update(userId, updatedStatus)
                             .then(fulfill, reject);
 
                     }, reject);

@@ -83,4 +83,18 @@ describe("userScheduleService", function() {
             });
     });
 
+    it("updates the user schedule", function(done){
+        spyOn(userScheduleDataServiceStub, "update").and.callThrough();
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+
+        service.update("555555")
+            .then(() => {
+                expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 2});
+                done();
+            });
+    });
+
+
 })
