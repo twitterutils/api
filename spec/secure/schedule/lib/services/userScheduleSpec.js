@@ -96,5 +96,14 @@ describe("userScheduleService", function() {
             });
     });
 
+    it("inserts a new schedule for new users", function(done){
+        spyOn(userScheduleDataServiceStub, "update").and.callThrough();
+        userScheduleFirstSeededResult = null;
 
+        service.update("555555")
+            .then(() => {
+                expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 1});
+                done();
+            });
+    });
 })

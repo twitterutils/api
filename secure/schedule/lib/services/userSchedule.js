@@ -8,6 +8,9 @@ module.exports = function (userScheduleDataService) {
                 userScheduleDataService
                     .first(userId)
                     .then((scheduleInfo) => {
+                        if (!scheduleInfo){
+                            scheduleInfo = { readCount: 0 };
+                        }
 
                         var updatedStatus = {
                             readCount: scheduleInfo.readCount + 1
