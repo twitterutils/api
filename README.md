@@ -337,6 +337,38 @@ Authorization: SECRET_API_KEY
 curl 'http://localhost:8080/secure/usernames/api/v1/find/2746028153,50457174' -H 'Authorization: SECRET_API_KEY'
 ```
 
+### Schedule - Update  
+Disables the specified `user_id`. It expects a `SECRET_API_KEY` in order to prevent abuse.
+
+Url `http://localhost:8080/secure/schedule/api/v1/updateuser`
+
+Headers
+
+```
+Content-Type: application/json
+Authorization: SECRET_API_KEY
+```
+
+Body
+
+```json
+{
+    "userid": "2746028153"
+}
+```
+
+Here's the curl equivalent
+
+```sh
+curl 'http://localhost:8080/secure/schedule/api/v1/updateuser' -H 'Content-Type: application/json' -H 'Authorization: SECRET_API_KEY' -X POST -d' {"userid": "2746028153"}'
+```
+
+**Response**  
+
+```json
+{"success": true}
+```
+
 ## Development
     npm run dev
 
