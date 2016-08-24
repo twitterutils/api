@@ -114,4 +114,17 @@ describe("userSchedule", function () {
 
         expect(userScheduleDataServiceStub.first).toHaveBeenCalledWith("555555");
     });
+
+    it("returns unexpected when the schedule could not be updated", function(){
+        userScheduleUpdateSeededError = "seeded error";
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+
+        controller.update("555555", "valid key", res);
+
+        expect(webErrorStub.unexpected).toHaveBeenCalledWith(
+            res, "Error Updating Schedule", "seeded error"
+        );
+    });
 })

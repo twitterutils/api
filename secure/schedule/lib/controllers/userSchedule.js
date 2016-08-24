@@ -11,9 +11,9 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                     userScheduleDataService(db)
                         .first(userId)
                         .then((scheduleInfo) => {
-
+                            webError.unexpected(response, "Error Updating Schedule", "seeded error");
                         }, (err) => {
-                            webError.unexpected(response, "Error Reading Schedule", "seeded error");
+                            webError.unexpected(response, "Error Reading Schedule", err);
                         })
                 });
         }
