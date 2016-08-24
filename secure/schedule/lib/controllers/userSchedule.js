@@ -1,3 +1,5 @@
+
+
 module.exports = function(dbConnection3, userScheduleDataService, apiKey, webError){
     return {
         update: (userId, reqApiKey, response) => {
@@ -34,7 +36,7 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                                     webError.unexpected(response, "Error Updating Schedule", err);
                                 });
                         }, (err) => {
-                            webError.unexpected(response, "Error Reading Schedule", err);
+                            webError.unexpected(response, "Error Updating Schedule", err);
                         })
                 });
         }

@@ -100,7 +100,7 @@ describe("userSchedule", function () {
         controller.update("555555", "valid key", res);
 
         expect(webErrorStub.unexpected).toHaveBeenCalledWith(
-            res, "Error Reading Schedule", "seeded error"
+            res, "Error Updating Schedule", "seeded error"
         );
     });
 
