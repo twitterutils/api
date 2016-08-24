@@ -382,4 +382,3 @@ The application will read its environment variables from `.env`. This file is no
 - heroku
 - mongolabs
 - loggly
-
