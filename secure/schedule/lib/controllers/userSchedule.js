@@ -1,4 +1,4 @@
-module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
+module.exports = function(dbConnection3, userScheduleDataService, apiKey, webError){
     return {
         update: (userId, reqApiKey, response) => {
             response.send({success: true});
