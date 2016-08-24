@@ -33,5 +33,19 @@ describe("userScheduleDataService", function() {
         };
 
         dataService = userScheduleDataService(db, currentDateSvc);
+    });
+
+    describe("update", function(){
+        it("fails when insertion fails", function(done){
+            spyOn(collectionStub, "updateOne").and.callFake((criteria, value, options, callback) => {
+                callback("something went wrong");
+            });
+
+            dataService.update(66666, {something: "most recent status"})
+                .then(null, (error) => {
+                    expect(error).toBe("something went wrong");
+                    done();
+                });
+        })
     })
 })
