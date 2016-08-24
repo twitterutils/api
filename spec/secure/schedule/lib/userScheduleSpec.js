@@ -127,4 +127,15 @@ describe("userSchedule", function () {
             res, "Error Updating Schedule", "seeded error"
         );
     });
+
+    it("updates the user schedule", function(){
+        spyOn(userScheduleDataServiceStub, "update").and.callThrough();
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+
+        controller.update("555555", "valid key", res);
+
+        expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 2});
+    });
 })
