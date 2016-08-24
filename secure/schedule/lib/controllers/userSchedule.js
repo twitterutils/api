@@ -20,6 +20,12 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                             var updatedStatus = {
                                 readCount: scheduleInfo.readCount + 1
                             };
+
+                            console.log("Updating-User-Schedule",
+                                "userId=", userId,
+                                "readCount", updatedStatus.readCount
+                            );
+
                             dataService
                                 .update(userId, updatedStatus)
                                 .then(() => {

@@ -70,6 +70,8 @@ describe("notifications", function() {
         };
 
         controller = notificationsController(dbConnection, notificationsDataServiceFactory, apiKeyStub, webErrorStub);
+
+        console.log = () => {};
     });
 
     it("returns unauthorized when the api key is invalid", function(){
