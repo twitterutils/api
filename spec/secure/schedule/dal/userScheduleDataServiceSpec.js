@@ -104,5 +104,19 @@ describe("userScheduleDataService", function() {
                     done();
                 });
         });
+
+        it("finds the user schedule", function(done){
+            spyOn(collectionStub, "findOne").and.callFake((criteria, callback) => {
+                if (JSON.stringify(criteria) === JSON.stringify({id: "10"})){
+                    callback(null, {field1: 25});
+                }
+            });
+
+            dataService.first(10)
+                .then((result) => {
+                    expect(result).toEqual({field1: 25});
+                    done();
+                });
+        });
     })
 })

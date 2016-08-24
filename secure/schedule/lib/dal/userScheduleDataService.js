@@ -29,7 +29,11 @@ module.exports = function(db, dateSvc) {
         },
         first: function(userId){
             return promise.create((fulfill, reject) => {
-                reject("something went wrong")
+                dbCollection()
+                    .findOne(
+                        {id: userId.toString()},
+                        handleResult(fulfill, reject)
+                    );
             })
         }
     }
