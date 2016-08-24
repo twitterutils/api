@@ -8,11 +8,13 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
 
             dbConnection3(response, "SCHEDULE_DB_CONNECTION_STRING")
                 .then((db) => {
-
-                    webError.unexpected(response, "Error Reading Schedule", "seeded error");
-
                     userScheduleDataService(db)
-                        .first(userId);
+                        .first(userId)
+                        .then((scheduleInfo) => {
+
+                        }, (err) => {
+                            webError.unexpected(response, "Error Reading Schedule", "seeded error");
+                        })
                 });
         }
     };
