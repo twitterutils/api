@@ -55,24 +55,24 @@ describe("userSchedule", function () {
             first: (userId) => {
                 return {
                     then: (successCallback, errorCallback) => {
-                        if (userScheduleFirstSeededResult){
-                            successCallback(userScheduleFirstSeededResult);
+                        if (userScheduleFirstSeededError){
+                            errorCallback(userScheduleFirstSeededError);
                             return;
                         }
 
-                        errorCallback(userScheduleFirstSeededError);
+                        successCallback(userScheduleFirstSeededResult);
                     }
                 };
             },
             update: (userId, scheduleInfo) => {
                 return {
                     then: (successCallback, errorCallback) => {
-                        if (userScheduleUpdateSeededResult){
-                            successCallback(userScheduleUpdateSeededResult);
+                        if (userScheduleUpdateSeededError){
+                            errorCallback(userScheduleUpdateSeededError);
                             return;
                         }
 
-                        errorCallback(userScheduleUpdateSeededError);
+                        successCallback(userScheduleUpdateSeededResult);
                     }
                 };
             }
@@ -137,6 +137,15 @@ describe("userSchedule", function () {
         controller.update("555555", "valid key", res);
 
         expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 2});
+    });
+
+    it("inserts a new schedule for new users", function(){
+        spyOn(userScheduleDataServiceStub, "update").and.callThrough();
+        userScheduleFirstSeededResult = null;
+
+        controller.update("555555", "valid key", res);
+
+        expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 1});
     });
 
     it("returns success", function(){

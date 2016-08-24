@@ -13,6 +13,10 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                     dataService
                         .first(userId)
                         .then((scheduleInfo) => {
+                            if (!scheduleInfo){
+                                scheduleInfo = { readCount: 0 };
+                            }
+
                             var updatedStatus = {
                                 readCount: scheduleInfo.readCount + 1
                             };
