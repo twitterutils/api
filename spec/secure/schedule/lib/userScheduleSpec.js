@@ -84,7 +84,13 @@ describe("userSchedule", function () {
             }
         };
 
-        controller = userScheduleController(dbConnection, userScheduleDataServiceFactory, apiKeyStub, webErrorStub);
+        controller = userScheduleController(
+            dbConnection,
+            userScheduleDataServiceFactory,
+            null,
+            apiKeyStub,
+            webErrorStub
+        );
     })
 
     it("returns unauthorized when the api key is invalid", function(){

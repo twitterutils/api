@@ -4,10 +4,11 @@ var router = require("express").Router();
 var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 var apiKey = rfr("lib/simpleApiKeyValidation");
 var userScheduleDataService = rfr("secure/schedule/lib/dal/userScheduleDataService");
-var userSchedule = rfr("secure/schedule/lib/controllers/userSchedule");
+var userScheduleController = rfr("secure/schedule/lib/controllers/userSchedule");
+var userScheduleService = rfr("secure/schedule/lib/services/userSchedule");
 
 router.post("/", (req, res) => {
-    userSchedule(dbConnectionFactory, userScheduleDataService, apiKey, webError)
+    userScheduleController(dbConnectionFactory, userScheduleDataService, userScheduleService, apiKey, webError)
         .update(req.body.userid, req.headers.authorization, res);
 });
 
