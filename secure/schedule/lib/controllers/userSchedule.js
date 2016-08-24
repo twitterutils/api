@@ -6,7 +6,14 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                 return;
             }
 
-            webError.unexpected(response, "Error Reading Schedule", "seeded error");
+            dbConnection3(response, "SCHEDULE_DB_CONNECTION_STRING")
+                .then((db) => {
+
+                    webError.unexpected(response, "Error Reading Schedule", "seeded error");
+
+                    userScheduleDataService(db)
+                        .first(userId);
+                });
         }
     };
 };

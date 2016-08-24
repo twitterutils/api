@@ -47,39 +47,36 @@ describe("userSchedule", function () {
             }
         };
 
-        userScheduleDataServiceStub = {
-            first: () => {},
-            update: () => {}
-        }
         userScheduleFirstSeededResult = null;
         userScheduleFirstSeededError  = null;
-        spyOn(userScheduleDataServiceStub, "first").and.callFake((notificationData) => {
-            return {
-                then: (successCallback, errorCallback) => {
-                    if (userScheduleFirstSeededResult){
-                        successCallback(userScheduleFirstSeededResult);
-                        return;
-                    }
-
-                    errorCallback(userScheduleFirstSeededError);
-                }
-            };
-        });
-
         userScheduleUpdateSeededResult = null;
         userScheduleUpdateSeededError  = null;
-        spyOn(userScheduleDataServiceStub, "update").and.callFake((notificationData) => {
-            return {
-                then: (successCallback, errorCallback) => {
-                    if (userScheduleUpdateSeededResult){
-                        successCallback(userScheduleUpdateSeededResult);
-                        return;
-                    }
+        userScheduleDataServiceStub = {
+            first: (userId) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        if (userScheduleFirstSeededResult){
+                            successCallback(userScheduleFirstSeededResult);
+                            return;
+                        }
 
-                    errorCallback(userScheduleUpdateSeededError);
-                }
-            };
-        });
+                        errorCallback(userScheduleFirstSeededError);
+                    }
+                };
+            },
+            update: (userId, scheduleInfo) => {
+                return {
+                    then: (successCallback, errorCallback) => {
+                        if (userScheduleUpdateSeededResult){
+                            successCallback(userScheduleUpdateSeededResult);
+                            return;
+                        }
+
+                        errorCallback(userScheduleUpdateSeededError);
+                    }
+                };
+            }
+        };
 
         var userScheduleDataServiceFactory = (pDb) => {
             if (pDb === db){
@@ -105,5 +102,16 @@ describe("userSchedule", function () {
         expect(webErrorStub.unexpected).toHaveBeenCalledWith(
             res, "Error Reading Schedule", "seeded error"
         );
+    });
+
+    it("reads the user schedule", function(){
+        spyOn(userScheduleDataServiceStub, "first").and.callThrough();
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+
+        controller.update("555555", "valid key", res);
+
+        expect(userScheduleDataServiceStub.first).toHaveBeenCalledWith("555555");
     });
 })
