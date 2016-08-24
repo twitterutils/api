@@ -138,4 +138,16 @@ describe("userSchedule", function () {
 
         expect(userScheduleDataServiceStub.update).toHaveBeenCalledWith("555555", {readCount: 2});
     });
+
+    it("returns success", function(){
+        spyOn(userScheduleDataServiceStub, "update").and.callThrough();
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+        userScheduleUpdateSeededResult = {};
+
+        controller.update("555555", "valid key", res);
+
+        expect(res.send).toHaveBeenCalledWith({success: true});
+    });
 })

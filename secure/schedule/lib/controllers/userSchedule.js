@@ -19,11 +19,10 @@ module.exports = function(dbConnection3, userScheduleDataService, apiKey, webErr
                             dataService
                                 .update(userId, updatedStatus)
                                 .then(() => {
-
+                                    response.send({success: true});
                                 }, (err) => {
                                     webError.unexpected(response, "Error Updating Schedule", err);
                                 });
-
                         }, (err) => {
                             webError.unexpected(response, "Error Reading Schedule", err);
                         })
