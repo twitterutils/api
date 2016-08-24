@@ -67,4 +67,20 @@ describe("userScheduleService", function() {
                 done();
             });
     });
+
+    it("returns unexpected when the schedule could not be updated", function(done){
+        userScheduleUpdateSeededError = "seeded error";
+        userScheduleFirstSeededResult = {
+            readCount: 1
+        };
+
+        service.update("555555");
+
+        service.update("555555")
+            .then(null, (err) => {
+                expect(err).toBe("seeded error");
+                done();
+            });
+    });
+
 })

@@ -8,7 +8,11 @@ module.exports = function (userScheduleDataService) {
                 userScheduleDataService
                     .first(userId)
                     .then((scheduleInfo) => {
-                        fulfill();
+
+                        userScheduleDataService
+                            .update(userId, scheduleInfo)
+                            .then(fulfill, reject);
+
                     }, reject);
             })
         }
