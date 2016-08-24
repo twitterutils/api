@@ -43,5 +43,15 @@ describe("userScheduleService", function() {
         };
 
         service = userScheduleService(userScheduleDataServiceStub)
-    })
+    });
+
+    it("returns unexpected when the schedule could not be read", function(done){
+        userScheduleFirstSeededError = "seeded error";
+
+        service.update("555555")
+            .then(null, (err) => {
+                expect(err).toBe("seeded error");
+                done();
+            });
+    });
 })
