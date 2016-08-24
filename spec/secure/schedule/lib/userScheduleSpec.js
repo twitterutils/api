@@ -96,4 +96,14 @@ describe("userSchedule", function () {
         expect(webErrorStub.unauthorized).toHaveBeenCalledWith(res, "Unauthorized");
         expect(openedConnections).toBe(0);
     });
+
+    it("returns unexpected when the schedule could not be read", function(){
+        userScheduleFirstSeededError = "seeded error";
+
+        controller.update("555555", "valid key", res);
+
+        expect(webErrorStub.unexpected).toHaveBeenCalledWith(
+            res, "Error Reading Schedule", "seeded error"
+        );
+    });
 })
