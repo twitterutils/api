@@ -3,12 +3,12 @@ var webError = rfr("lib/webApiError");
 var router = require("express").Router();
 var dbConnectionFactory = rfr("lib/webApiMongoDbConnectionFactory");
 var apiKey = rfr("lib/simpleApiKeyValidation");
+var scheduleListController = rfr("secure/schedule/lib/controllers/scheduleList");
+var scheduleListDataService = rfr("secure/schedule/lib/dal/scheduleListDataService");
 
 router.get("/", (req, res, next) => {
-    res.send([
-        "111111",
-        "222222"
-    ]);
+    scheduleListController(dbConnectionFactory, scheduleListDataService, apiKey, webError)
+        .all(req.headers.authorization, res);
 });
 
 module.exports = router;
