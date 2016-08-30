@@ -369,6 +369,34 @@ curl 'http://localhost:8080/secure/schedule/api/v1/updateuser' -H 'Content-Type:
 {"success": true}
 ```
 
+### Schedule - List  
+
+Retrieves a list of the userIds to be crawled. It expects a `SECRET_API_KEY` in order to prevent abuse.  
+
+```
+GET http://localhost:8080/secure/schedule/api/v1/list/
+```
+
+Headers
+
+```
+Authorization: SECRET_API_KEY
+```
+
+**Response**  
+
+```json
+[
+  "2746028153",
+  "50457174"
+]
+```
+
+```sh
+curl 'http://localhost:8080/secure/schedule/api/v1/list' -H 'Authorization: SECRET_API_KEY'
+```
+
+
 ## Development
     npm run dev
 
