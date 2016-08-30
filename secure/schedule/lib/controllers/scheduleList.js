@@ -5,11 +5,23 @@ module.exports = function(
     webError){
     return {
         all: (reqApiKey, response) => {
-            response.send([
-                "1111111",
-                "2222222",
-                "3333333"
-            ]);
+            if (!apiKey.isValid(reqApiKey)) {
+                webError.unauthorized(response, "Unauthorized");
+                return;
+            }
+
+            dbConnectionFactory(response, "SCHEDULE_DB_CONNECTION_STRING")
+                .then((db) => {
+                    scheduleListDataService(db)
+                        .all()
+                        .then((userIds) => {
+                            var result = (userIds || [])
+                                .map((u) => u.userId.toString());
+                            response.send(result);
+                        }, (err) => {
+                            webError.unexpected(response, "Error Updating Schedule", err);
+                        })
+                });
         }
     };
 };
