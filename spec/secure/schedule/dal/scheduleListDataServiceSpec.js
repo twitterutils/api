@@ -27,4 +27,48 @@ describe("scheduleListDataService", function () {
 
         dataService = scheduleListDataService(db);
     });
+
+    describe("all", function(){
+        it ("reads all the records", function(done){
+            spyOn(collectionStub, "find").and.callFake(() => {
+                return {
+                    toArray: () => {
+                        return promise.create((fulfill, reject) => {
+                            fulfill([
+                                "111111",
+                                "222222",
+                                "333333"
+                            ]);
+                        });
+                    }
+                }
+            });
+
+            dataService.all().then((result) => {
+                expect(result).toEqual([
+                    "111111",
+                    "222222",
+                    "333333"
+                ]);
+                done();
+            });
+        });
+
+        it ("fails when the information could not be read", function(done){
+            spyOn(collectionStub, "find").and.callFake(() => {
+                return {
+                    toArray: () => {
+                        return promise.create((fulfill, reject) => {
+                            reject("could not read users");
+                        });
+                    }
+                }
+            });
+
+            dataService.all().then(null, (err) => {
+                expect(err).toBe("could not read users");
+                done();
+            });
+        })
+    })
 })
