@@ -1,4 +1,3 @@
-
 module.exports = function(
     dbConnectionFactory,
     userScheduleServiceFactory,
