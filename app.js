@@ -29,7 +29,7 @@ app.use("/secure/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/re
 
 
 app.use("/secure/schedule/api/v1/status", rfr("lib/routes/status")("SCHEDULE_DB_CONNECTION_STRING"));
-// app.use("/secure/schedule/api/v1/list", rfr("secure/schedule/routes/api/v1/scheduled_users_list"));
+app.use("/secure/schedule/api/v1/list", rfr("secure/schedule/routes/api/v1/scheduled_users_list"));
 app.use("/secure/schedule/api/v1/updateuser", rfr("secure/schedule/routes/api/v1/update_user_scheduled_time"));
 
 
