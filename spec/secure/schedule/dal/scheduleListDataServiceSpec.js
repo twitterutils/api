@@ -8,4 +8,23 @@ describe("scheduleListDataService", function () {
             scheduleListDataService();
         }).toThrow(new Error("A database is required"));
     });
+
+    var dataService = null;
+    var collectionStub = null;
+
+    beforeEach(function(){
+        collectionStub = {
+            find: function(){}
+        };
+
+        var db = {
+            collection: function(collectionName){
+                if (collectionName === "schedule_upcoming_list"){
+                    return collectionStub;
+                }
+            }
+        };
+
+        dataService = scheduleListDataService(db);
+    });
 })
