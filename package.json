@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prestart": "npm install --only=prod",
-    "start": "aws-cloudwatch-forwarder 'node --version && nf run node ./bin/www'",
+    "start": "aws-cloudwatch-forwarder 'nf run node ./bin/www'",
     "predev": "npm install",
     "dev": "DEBUG=twitter_utils:* PORT=8080 nf run supervisor ./bin/www",
     "debug": "DEBUG=twitter_utils:* PORT=8080 nf run node-debug ./bin/www",
