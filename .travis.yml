@@ -1,3 +1,12 @@
+git:
+  depth: 1
+branches:
+  only:
+  - master
 language: node_js
 node_js:
   - "5"
+install:
+  - "cd ./api/ && npm install"
+script:
+  - "cd ./api/ && npm test"
