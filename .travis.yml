@@ -7,6 +7,6 @@ language: node_js
 node_js:
   - "5"
 install:
-  - "cd ./api/ && npm install"
+  - "cd api && npm install"
 script:
-  - "cd ./api/ && npm test"
+  - "cd api && npm test"
