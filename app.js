@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use("/secure/login/api/v1/status", rfr("lib/routes/status")("LOGIN_DB_CONNECTION_STRING"));
+app.use("/secure/login/api/v1/status", rfr("lib/routes/status")("TWU_API_LOGIN_DB_CONNECTION_STRING"));
 app.use("/secure/login/api/v1/users", rfr("secure/login/routes/api/v1/users"));
 app.use("/secure/login/api/v1/user", rfr("secure/login/routes/api/v1/user_details"));
 app.use("/secure/login/api/v1/disable", rfr("secure/login/routes/api/v1/disable_user"));
@@ -21,31 +21,31 @@ app.use("/secure/login/api/v1/login", rfr("secure/login/routes/api/v1/login"));
 app.use("/secure/login/api/v1/auth/twitter_callback/", rfr("secure/login/routes/api/v1/auth/twitter_callback"));
 
 
-app.use("/secure/graph/api/v1/status", rfr("lib/routes/status")("GRAPH_DB_CONNECTION_STRING"));
+app.use("/secure/graph/api/v1/status", rfr("lib/routes/status")("TWU_API_GRAPH_DB_CONNECTION_STRING"));
 app.use("/secure/graph/api/v1/graph", rfr("secure/graph/routes/api/v1/graph_details"));
 app.use("/secure/graph/api/v1/user", rfr("secure/graph/routes/api/v1/user_details"));
 app.use("/secure/graph/api/v1/changes", rfr("secure/graph/routes/api/v1/user_changes_list"));
 app.use("/secure/graph/api/v1/recentchanges", rfr("secure/graph/routes/api/v1/recent_changes_list"));
 
 
-app.use("/secure/schedule/api/v1/status", rfr("lib/routes/status")("SCHEDULE_DB_CONNECTION_STRING"));
+app.use("/secure/schedule/api/v1/status", rfr("lib/routes/status")("TWU_API_SCHEDULE_DB_CONNECTION_STRING"));
 app.use("/secure/schedule/api/v1/list", rfr("secure/schedule/routes/api/v1/scheduled_users_list"));
 app.use("/secure/schedule/api/v1/updateuser", rfr("secure/schedule/routes/api/v1/update_user_scheduled_time"));
 
 
-app.use("/secure/notifications/api/v1/status", rfr("lib/routes/status")("NOTIFICATIONS_DB_CONNECTION_STRING"));
+app.use("/secure/notifications/api/v1/status", rfr("lib/routes/status")("TWU_API_NOTIFICATIONS_DB_CONNECTION_STRING"));
 app.use("/secure/notifications/api/v1/send", rfr("secure/notifications/routes/api/v1/send_notification"));
 
 
-app.use("/secure/feed/api/v1/status", rfr("lib/routes/status")("NOTIFICATIONS_DB_CONNECTION_STRING"));
+app.use("/secure/feed/api/v1/status", rfr("lib/routes/status")("TWU_API_NOTIFICATIONS_DB_CONNECTION_STRING"));
 app.use("/secure/feed/api/v1/recentnotifications", rfr("secure/feed/routes/api/v1/recent_notifications"));
 
 
-app.use("/secure/usernames/api/v1/status", rfr("lib/routes/status")("USERNAMES_DB_CONNECTION_STRING"));
+app.use("/secure/usernames/api/v1/status", rfr("lib/routes/status")("TWU_API_USERNAMES_DB_CONNECTION_STRING"));
 app.use("/secure/usernames/api/v1/find", rfr("secure/usernames/routes/api/v1/usernames_list"));
 
 
-app.use("/public/api/v1/status", rfr("lib/routes/status")("FEEDBUILDER_DB_CONNECTION_STRING"));
+app.use("/public/api/v1/status", rfr("lib/routes/status")("TWU_API_FEEDBUILDER_DB_CONNECTION_STRING"));
 app.use("/public/api/v1/feed", rfr("public/routes/api/v1/user_feed"));
 
 

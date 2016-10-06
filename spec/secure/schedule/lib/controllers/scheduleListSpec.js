@@ -35,7 +35,7 @@ describe("scheduleList", function() {
         openedConnections = 0;
         var dbConnection = (r, dbConnectionKey) => {
             openedConnections++;
-            if (dbConnectionKey === "SCHEDULE_DB_CONNECTION_STRING" &&
+            if (dbConnectionKey === "TWU_API_SCHEDULE_DB_CONNECTION_STRING" &&
                 r === res){
                 return {
                     then: (successCallback, errorCallback) =>{

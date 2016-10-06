@@ -12,7 +12,7 @@ module.exports = function (
 
             var userIds = userIdsStr.split(",");
 
-            dbConnectionFactory(response, "USERNAMES_DB_CONNECTION_STRING")
+            dbConnectionFactory(response, "TWU_API_USERNAMES_DB_CONNECTION_STRING")
                 .then((db) => {
                     usernamesDataService(db)
                         .find(userIds)

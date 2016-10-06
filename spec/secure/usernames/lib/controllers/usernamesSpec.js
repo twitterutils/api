@@ -29,7 +29,7 @@ describe("usernamesController", function () {
         };
 
         var dbConnection = (r, dbConnectionKey) => {
-            if (dbConnectionKey === "USERNAMES_DB_CONNECTION_STRING" &&
+            if (dbConnectionKey === "TWU_API_USERNAMES_DB_CONNECTION_STRING" &&
                 r === res){
                 return {
                     then: (successCallback, errorCallback) =>{

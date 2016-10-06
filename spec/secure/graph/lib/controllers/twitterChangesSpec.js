@@ -31,7 +31,7 @@ describe("twitterChanges", function() {
         };
 
         var dbConnection = (r, dbConnectionKey) => {
-            if (dbConnectionKey === "GRAPH_DB_CONNECTION_STRING" &&
+            if (dbConnectionKey === "TWU_API_GRAPH_DB_CONNECTION_STRING" &&
                 r === res){
                 return {
                     then: (successCallback, errorCallback) =>{

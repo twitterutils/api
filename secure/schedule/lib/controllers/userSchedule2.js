@@ -10,7 +10,7 @@ module.exports = function(
                 return;
             }
 
-            dbConnectionFactory(response, "SCHEDULE_DB_CONNECTION_STRING")
+            dbConnectionFactory(response, "TWU_API_SCHEDULE_DB_CONNECTION_STRING")
                 .then((db) => {
                     userScheduleServiceFactory
                         .create(db)

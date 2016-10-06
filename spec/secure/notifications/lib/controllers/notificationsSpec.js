@@ -35,7 +35,7 @@ describe("notifications", function() {
         openedConnections = 0;
         var dbConnection = (r, dbConnectionKey) => {
             openedConnections++;
-            if (dbConnectionKey === "NOTIFICATIONS_DB_CONNECTION_STRING" &&
+            if (dbConnectionKey === "TWU_API_NOTIFICATIONS_DB_CONNECTION_STRING" &&
                 r === res){
                 return {
                     then: (successCallback, errorCallback) =>{

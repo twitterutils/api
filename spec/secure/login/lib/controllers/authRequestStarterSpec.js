@@ -41,7 +41,7 @@ describe("authRequestStarter", function(){
         };
 
         var dbConnectionFactory = (r, dbConnectionKey) => {
-            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" && r === res){
+            if (dbConnectionKey === "TWU_API_LOGIN_DB_CONNECTION_STRING" && r === res){
                 return {
                     then: (successCallback) => {
                         successCallback(db);

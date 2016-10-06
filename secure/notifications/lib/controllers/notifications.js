@@ -11,7 +11,7 @@ module.exports = function(
                 return;
             }
 
-            dbConnectionFactory(response, "NOTIFICATIONS_DB_CONNECTION_STRING")
+            dbConnectionFactory(response, "TWU_API_NOTIFICATIONS_DB_CONNECTION_STRING")
                 .then((db) => {
                     notificationsDataService(db)
                         .save({

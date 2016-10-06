@@ -78,7 +78,7 @@ describe("userFeed", function () {
 
         controller.read("lolo", res);
 
-        expect(readDbConnectionString).toBe("FEEDBUILDER_DB_CONNECTION_STRING");
+        expect(readDbConnectionString).toBe("TWU_API_FEEDBUILDER_DB_CONNECTION_STRING");
     });
 
     it ("reads the user feed", function(){

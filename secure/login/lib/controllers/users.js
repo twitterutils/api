@@ -6,7 +6,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
+            dbConnection3(response, "TWU_API_LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
                         .all({disabled: false})
@@ -23,7 +23,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
+            dbConnection3(response, "TWU_API_LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
                         .first(userId)
@@ -48,7 +48,7 @@ module.exports = function(dbConnection3, appUsersDataService, apiKey, webError){
                 return;
             }
 
-            dbConnection3(response, "LOGIN_DB_CONNECTION_STRING")
+            dbConnection3(response, "TWU_API_LOGIN_DB_CONNECTION_STRING")
                 .then((db) => {
                     appUsersDataService(db)
                         .updateCredentials(userId, {disabled: true})

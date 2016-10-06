@@ -23,7 +23,7 @@ describe("authRequestCompletion", function(){
         spyOn(webError, "logError");
 
         dbConnectionFactory = function(res, dbConnectionKey){
-            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" &&
+            if (dbConnectionKey === "TWU_API_LOGIN_DB_CONNECTION_STRING" &&
                 res === response){
                 return {
                     then: function(callback){

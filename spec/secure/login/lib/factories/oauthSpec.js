@@ -3,15 +3,15 @@ var oauthFactory = rfr("secure/login/lib/factories/oauth");
 
 describe("oauth", function(){
     beforeEach(function() {
-        process.env.TWITTER_CALLBACK_BASE = "tcb";
+        process.env.TWU_API_TWITTER_CALLBACK_BASE = "tcb";
     });
 
     afterEach(function() {
-        process.env.TWITTER_CALLBACK_BASE = null;
+        process.env.TWU_API_TWITTER_CALLBACK_BASE = null;
     });
 
     it("should have the correct TWITTER_CALLBACK_BASE", function(){
-        expect(process.env.TWITTER_CALLBACK_BASE).toBe("tcb");
+        expect(process.env.TWU_API_TWITTER_CALLBACK_BASE).toBe("tcb");
     });
 
     describe("when there's no auth_request_id", function(){

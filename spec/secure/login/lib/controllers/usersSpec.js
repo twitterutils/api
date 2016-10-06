@@ -30,7 +30,7 @@ describe("users", function(){
         };
 
         var dbConnection = (r, dbConnectionKey) => {
-            if (dbConnectionKey === "LOGIN_DB_CONNECTION_STRING" && r === res){
+            if (dbConnectionKey === "TWU_API_LOGIN_DB_CONNECTION_STRING" && r === res){
                 return {
                     then: (successCallback, errorCallback) =>{
                         successCallback(db);
