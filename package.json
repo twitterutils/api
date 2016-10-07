@@ -1,0 +1,10 @@
+{
+  "name": "twu-heroku-package",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "cd api && npm i",
+    "web": "cd api && npm start",
+    "test": "cd api && npm t"
+  }
+}

@@ -6,6 +6,3 @@ branches:
 language: node_js
 node_js:
   - "5"
-env:
-  - TEST_DIR=api
-script: cd $TEST_DIR && npm install && npm test
