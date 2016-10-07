@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install": "cd api && npm i",
+    "install": "cd api && npm i && cd .. && cd cronjobs && npm i",
     "web": "cd api && npm start",
-    "test": "cd api && npm t"
+    "worker": "cd cronjobs && npm start",
+    "test": "cd api && npm t && cd .. && cd cronjobs && npm t"
   }
 }

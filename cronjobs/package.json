@@ -1,0 +1,52 @@
+{
+  "name": "twu-cronjobs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node --version && nf run aws-cloudwatch-forwarder 'node main.js'",
+    "web": "node --version && nf run node web.js",
+
+    "dev": "nf run node main.js",
+    "debug": "nf run node-debug main.js",
+
+
+    "devuserschedule": "nf run node userschedule/main.js",
+    "debuguserschedule": "nf run node-debug userschedule/main.js",
+
+    "devusergraph": "nf run node usergraph/main.js",
+    "debugusergraph": "nf run node-debug usergraph/main.js",
+
+    "devusername": "nf run node username/main.js",
+    "debugusername": "nf run node-debug username/main.js",
+
+    "devautounfollow": "nf run node autounfollow/main.js",
+    "debugautounfollow": "nf run node-debug autounfollow/main.js",
+
+    "devfeedbuilder": "nf run node feedbuilder/main.js",
+    "debugfeedbuilder": "nf run node-debug feedbuilder/main.js",
+
+
+    "test": "jasmine",
+    "testwatch": "watch -n2 jasmine",
+    "testdebug": "node-debug jasmine"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "node-inspector": "^0.12.7"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "aws-cloudwatch-forwarder": "^1.0.1",
+    "foreman": "^1.4.1",
+    "global-console-prefix": "^2.0.0",
+    "iso-date-str": "^1.0.0",
+    "mongodb": "^2.2.0",
+    "node-uuid": "^1.4.7",
+    "request": "^2.73.0",
+    "rfr": "^1.2.3",
+    "the-promise-factory": "^1.0.0",
+    "throttle-factory": "^1.0.0",
+    "twitter-node-client-factory": "^1.0.4",
+    "underscore": "^1.8.3"
+  }
+}
