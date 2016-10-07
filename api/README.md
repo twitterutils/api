@@ -1,7 +1,5 @@
 # Twitter Utils Api  
 
-[![Build Status](https://travis-ci.org/twitterutils/api.svg?branch=master)](https://travis-ci.org/twitterutils/api)  
-
 The ubiquitous Api... until it needs to be broken down in pieces
 
 ## Api - Usage
@@ -306,9 +304,3 @@ Retrieves a list of the userIds to be crawled.
 The application will read its environment variables from `.env`. This file is not in source control. Therefore it is sane to keep it in a backed up location.
 
     ln -s ~/<PATH_TO_ACTUAL_UTILS_FILE>/twitter_utils_api_env.txt .env
-
-## Infrastructure  
-- nodejs
-- heroku
-- mongolabs
-- loggly
