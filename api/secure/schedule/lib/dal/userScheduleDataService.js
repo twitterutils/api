@@ -11,6 +11,8 @@ module.exports = function(db, dateSvc) {
         update: function(userId, scheduleInfo){
             if (!scheduleInfo) scheduleInfo = {};
 
+            console.log("userScheduleDataService.update userId=", userId);
+
             scheduleInfo.id = userId.toString();
             scheduleInfo.version = MODEL_VERSION;
             scheduleInfo.modified_time_str = dateSvc();
