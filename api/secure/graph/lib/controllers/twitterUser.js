@@ -12,7 +12,7 @@ module.exports = function(dbConnectionFactory, twitterUserDataService, apiKey, w
                         .first(twitterUserId)
                         .then((twitterUser) => {
                             if (!twitterUser){
-                                webError.notFound(response, `User not found ${twitterUserId || ""}`);
+                                webError.notFound(response, `User not found userId='${twitterUserId || ""}'`);
                                 return;
                             }
 

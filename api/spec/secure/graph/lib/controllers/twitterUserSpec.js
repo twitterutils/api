@@ -91,7 +91,7 @@ describe("twitterUser", function() {
             controller.details("my twitter user id", "my secret key", res);
 
             expect(webError.notFound).toHaveBeenCalledWith(
-                res, "User not found"
+                res, "User not found userId='my twitter user id'"
             );
         });
 
