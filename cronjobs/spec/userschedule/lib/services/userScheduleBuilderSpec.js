@@ -120,4 +120,30 @@ describe("userScheduleBuilder", function () {
             done();
         })
     })
+
+    it ("retrieves the new users first", function(done){
+        seededRegisteredUsers = [
+            {id: 1},
+            {id: 2},
+            {id: 3},
+            {id: 4},
+            {id: 5},
+            {id: 6}
+        ];
+
+        seededReadResult = [
+            {id: "1", readCount: 4},
+            {id: "2", readCount: 4},
+            {id: "3", readCount: 5},
+            {id: "4", readCount: 6},
+            {id: "5", readCount: 7}
+        ];
+
+        builder.build().then((userIds) => {
+            expect(userIds).toEqual([
+                "6", "1", "2"
+            ]);
+            done();
+        })
+    })
 })

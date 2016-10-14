@@ -1,5 +1,6 @@
 var promise = require("the-promise-factory");
 var async = require("async");
+var _ = require("underscore");
 
 module.exports = function(registeredUsersDataService, userScheduleDataService) {
     return {
@@ -43,8 +44,27 @@ module.exports = function(registeredUsersDataService, userScheduleDataService) {
         userScheduleDataService
             .read(userIds)
             .then((schedules) => {
-                callback(null, schedules);
+                extractUserIds(schedules, (err, scannedUserIds) => {
+                    var newUserIds = inAButNotInB(userIds, scannedUserIds)
+
+                    var schedulesForNewUsers = newUserIds.map(id => {
+                        return {
+                            id: id,
+                            readCount: -1
+                        }
+                    })
+
+                    var comprehensiveSchedules = schedules.concat(schedulesForNewUsers)
+
+                    callback(null, comprehensiveSchedules);
+                })
             }, callback);
+    }
+
+    function inAButNotInB(A, B) {
+        return _.filter(A, function (a) {
+            return !_.contains(B, a);
+        });
     }
 
     function filterUserSchedules(schedules, callback){
