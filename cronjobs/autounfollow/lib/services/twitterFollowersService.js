@@ -20,7 +20,10 @@ module.exports = function (registeredUsersDataService, twitterClientFactory, twi
                 throttle.execute(() => {
                     var twitterClient = twitterClientFactory(
                         credentials.oauth_access_token,
-                        credentials.oauth_access_token_secret
+                        credentials.oauth_access_token_secret,
+                        null,
+                        "TWU_CRON_AUTOUNFOLLOW_TWITTER_CONSUMER_KEY",
+                        "TWU_CRON_AUTOUNFOLLOW_TWITTER_CONSUMER_SECRET"
                     );
                     twitterClient.doPost(
                         twitterClient.baseUrl + "/friendships/destroy.json",

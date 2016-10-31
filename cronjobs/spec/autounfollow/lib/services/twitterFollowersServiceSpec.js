@@ -9,6 +9,9 @@ describe("twitterFollowersService", function () {
 
     var lastUsedAccessToken = null;
     var lastUsedAccessTokenSecret = null;
+    var lastUsedCallback = null;
+    var lastUsedConsumerKey = null;
+    var lastUsedConsumerSecret = null;
     var disabledUsers = null;
 
     beforeEach(function(){
@@ -19,10 +22,16 @@ describe("twitterFollowersService", function () {
 
         lastUsedAccessToken = null;
         lastUsedAccessTokenSecret = null;
+        lastUsedCallback = null;
+        lastUsedConsumerKey = null;
+        lastUsedConsumerSecret = null;
 
-        var twitterClientFactory = function(accessToken, accessTokenSecret){
+        var twitterClientFactory = function(accessToken, accessTokenSecret, callback, consumerKey, consumerSecret){
             lastUsedAccessToken = accessToken;
             lastUsedAccessTokenSecret = accessTokenSecret;
+            lastUsedCallback = callback;
+            lastUsedConsumerKey = consumerKey;
+            lastUsedConsumerSecret = consumerSecret;
             return twitterClientStub;
         }
 
@@ -85,6 +94,9 @@ describe("twitterFollowersService", function () {
                 .then((result) => {
                     expect(lastUsedAccessToken).toBe("token");
                     expect(lastUsedAccessTokenSecret).toBe("token_secret");
+                    expect(lastUsedCallback).toBe(null);
+                    expect(lastUsedConsumerKey).toBe("TWU_CRON_AUTOUNFOLLOW_TWITTER_CONSUMER_KEY")
+                    expect(lastUsedConsumerSecret).toBe("TWU_CRON_AUTOUNFOLLOW_TWITTER_CONSUMER_SECRET")
 
                     expect(invocation.url).toEqual("baseUrl/friendships/destroy.json");
                     expect(invocation.callParams).toEqual({
