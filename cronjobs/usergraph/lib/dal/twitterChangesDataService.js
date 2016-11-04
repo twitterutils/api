@@ -9,7 +9,7 @@ module.exports = function (db, dateSvc) {
 
     return {
         save: function(change){
-            console.log("twitterChangesDataService.save", "change=", change);
+            console.log("twitterChangesDataService.save", "change=", JSON.stringify(change));
 
             return promise.create((fulfill, reject) => {
                 dbCollection()
