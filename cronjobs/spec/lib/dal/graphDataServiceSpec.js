@@ -39,7 +39,7 @@ describe("graphDataService", function() {
             dataService
                 .userDetails("myuserid")
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });
@@ -85,7 +85,7 @@ describe("graphDataService", function() {
             dataService
                 .userChanges("myuserid")
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });
@@ -140,7 +140,7 @@ describe("graphDataService", function() {
             dataService
                 .recentChanges("mygraphid")
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });

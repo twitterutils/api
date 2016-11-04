@@ -67,7 +67,7 @@ describe("notificationsDataService", function() {
         dataService
             .send("unfollow", "555566")
             .then(null, (err) => {
-                expect(err).toBe("Invalid response Code");
+                expect(err).toBe("Invalid response Code 500");
                 done();
             });
     });

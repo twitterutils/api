@@ -18,7 +18,7 @@ module.exports = function(request){
             return promise.create((fulfill, reject) => {
                 request(requestParams, (error, response, body) => {
                     if (error) return reject(error);
-                    if (response.statusCode !== 200) return reject("Invalid response Code");
+                    if (response.statusCode !== 200) return reject(`Invalid response Code ${response.statusCode}`);
 
                     var credentials = JSON.parse(body)
                     var result = {

@@ -32,7 +32,7 @@ describe("userCredentialsDataService", function(){
         dataService
             .first("myuserid")
             .then(null, (err) => {
-                expect(err).toBe("Invalid response Code");
+                expect(err).toBe("Invalid response Code 500");
                 done();
             });
     });

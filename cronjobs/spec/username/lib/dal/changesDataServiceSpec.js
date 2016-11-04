@@ -45,7 +45,7 @@ describe("changesDataService", function() {
             dataService
                 .userChanges(5555555)
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });

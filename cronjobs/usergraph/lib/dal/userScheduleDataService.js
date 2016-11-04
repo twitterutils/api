@@ -22,7 +22,7 @@ module.exports = function(request) {
                     buildReadRequestInfo(),
                     (error, response, body) => {
                         if (error) return reject(error);
-                        if (response.statusCode !== 200) return reject("Invalid response Code");
+                        if (response.statusCode !== 200) return reject(`Invalid response Code ${response.statusCode}`);
 
                         fulfill(JSON.parse(body));
                     }

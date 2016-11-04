@@ -75,7 +75,7 @@ describe("userScheduleDataService", function() {
             dataService
                 .update("555566")
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });
@@ -123,7 +123,7 @@ describe("userScheduleDataService", function() {
             dataService
                 .read()
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });

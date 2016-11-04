@@ -44,7 +44,7 @@ describe("registeredUsersDataService", function(){
             dataService
                 .all()
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });
@@ -113,7 +113,7 @@ describe("registeredUsersDataService", function(){
             dataService
                 .disable("555566")
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });

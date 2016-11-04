@@ -44,7 +44,7 @@ describe("usernamesDataService", function() {
             dataService
                 .find(["29893096","50457174","2746028153"])
                 .then(null, (err) => {
-                    expect(err).toBe("Invalid response Code");
+                    expect(err).toBe("Invalid response Code 500");
                     done();
                 });
         });

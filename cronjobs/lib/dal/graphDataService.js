@@ -46,7 +46,7 @@ module.exports = function(request) {
     function handleResponse(fulfill, reject, parseBody){
         return (error, response, body) => {
             if (error) return reject(error);
-            if (response.statusCode !== 200) return reject("Invalid response Code");
+            if (response.statusCode !== 200) return reject(`Invalid response Code ${response.statusCode}`);
 
             var result = parseBody(body);
 
