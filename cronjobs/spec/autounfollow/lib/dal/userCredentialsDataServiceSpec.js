@@ -24,6 +24,8 @@ describe("userCredentialsDataService", function(){
         };
 
         dataService = userCredentialsDataService(requestStub);
+
+        spyOn(console, "log")
     });
 
     it("returns an error when the http response code is not 200", function(done){

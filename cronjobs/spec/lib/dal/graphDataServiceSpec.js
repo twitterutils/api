@@ -26,6 +26,8 @@ describe("graphDataService", function() {
         };
 
         dataService = graphDataService(requestStub);
+
+        spyOn(console, "log")
     });
 
     describe("userDetails", function(){

@@ -18,6 +18,8 @@ module.exports = function(request){
                 json: body
             };
 
+            console.log("postRequestHelper.url=", requestParams.url)
+
             return promise.create((fulfill, reject) => {
                 request(requestParams, (error, response, body) => {
                     if (error) return reject(error);

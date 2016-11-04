@@ -31,12 +31,16 @@ module.exports = function(request) {
     };
 
     function buildApiRequest(methodAndParameters){
-        return {
+        var result = {
             headers: {
                 'Authorization': process.env.TWU_CRON_GRAPH_API_KEY
             },
             url: process.env.TWU_CRON_GRAPH_API_BASE_URL + "/secure/graph/api/v1/" + methodAndParameters +"/"
         };
+
+        console.log("graphDataService.url", result.url);
+
+        return result
     }
 
     function handleChangesResponse(fulfill, reject){

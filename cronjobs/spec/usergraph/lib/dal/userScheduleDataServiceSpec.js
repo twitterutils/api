@@ -25,6 +25,8 @@ describe("userScheduleDataService", function() {
         };
 
         dataService = userScheduleDataService(localRequestStub);
+
+        spyOn(console, "log")
     });
 
     describe("update", function(){

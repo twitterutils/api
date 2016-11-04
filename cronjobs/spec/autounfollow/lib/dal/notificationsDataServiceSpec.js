@@ -29,6 +29,8 @@ describe("notificationsDataService", function() {
         };
 
         dataService = notificationsDataService(requestStub);
+
+        spyOn(console, "log")
     });
 
     it ("sends the notification details", function(done){

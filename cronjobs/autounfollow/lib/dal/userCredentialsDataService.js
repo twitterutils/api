@@ -15,6 +15,8 @@ module.exports = function(request){
                 url: process.env.TWU_CRON_LOGIN_API_BASE_URL + "/secure/login/api/v1/user/" + userId + "/"
             }
 
+            console.log("userCredentialsDataService.first", "url=", requestParams.url)
+
             return promise.create((fulfill, reject) => {
                 request(requestParams, (error, response, body) => {
                     if (error) return reject(error);

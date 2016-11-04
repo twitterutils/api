@@ -32,11 +32,15 @@ module.exports = function(request) {
     };
 
     function buildReadRequestInfo(){
-        return {
+        var result = {
             headers: {
                 'Authorization': process.env.TWU_CRON_SCHEDULE_API_KEY
             },
             url: process.env.TWU_CRON_SCHEDULE_API_BASE_URL + "/secure/schedule/api/v1/list/"
         };
+
+        console.log("userScheduleDataService.url=", result.url)
+
+        return result
     }
 };
