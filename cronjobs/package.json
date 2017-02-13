@@ -31,10 +31,10 @@
     "testdebug": "node-debug jasmine"
   },
   "devDependencies": {
-    "jasmine": "^2.4.1",
     "node-inspector": "^0.12.7"
   },
   "dependencies": {
+    "jasmine": "^2.4.1",
     "async": "^2.0.0-rc.2",
     "aws-cloudwatch-forwarder": "^1.0.1",
     "foreman": "^1.4.1",
