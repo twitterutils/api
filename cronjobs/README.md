@@ -11,7 +11,7 @@ The application will read its environment variables from `.env`. This file is no
 
 Build the container  
 
-    docker build -t tddapps/twitterutils_cronjobs .
+    docker build -t camilin87/twitterutils_cronjobs .
 
 Run the container  
 
