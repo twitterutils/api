@@ -16,4 +16,5 @@ Build the container
 Run the container  
 
     docker run --rm --name twu-cronjobs \
-        --env-file=.env tddapps/twitterutils_cronjobs
+        --env-file=.env camilin87/twitterutils_cronjobs
+
