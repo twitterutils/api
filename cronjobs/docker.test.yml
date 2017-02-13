@@ -1,0 +1,3 @@
+cron:
+  build: .
+  command: bash -c "npm test"
