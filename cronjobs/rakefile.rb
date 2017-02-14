@@ -27,7 +27,7 @@ task :env => [:cleanup] do
         .join(",")
 
     File.open(ENV_FILE_NAME, 'w') do |f|
-        f.puts "TASK_SCHEDULE=* * * * 10"
+        f.puts "TASK_SCHEDULE=*/10 * * * *"
         f.puts "COPY_ENV_VARS=#{all_var_names}"
 
         env_variables.each { |l|
