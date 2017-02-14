@@ -33,9 +33,19 @@ cat > gen_containerInfo.json <<EOL
 }
 EOL
 
+# run the cron locally  
 docker run --rm -d --name docker-scrapy-cron                  \
   -v /var/run/docker.sock:/var/run/docker.sock                \
   -v $PWD/gen_containerInfo.json:/usr/src/containerInfo.json  \
   --env-file=.env-prod                                        \
+  camilin87/docker-cron
+
+# run the cron as a swarm service  
+docker service create \
+  --replicas 1 \
+  --name twu-cron-scheduler \
+  --env-file=.env-prod \
+  --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
+  --mount type=bind,source=$PWD/gen_containerInfo.json,destination=/usr/src/containerInfo.json \
   camilin87/docker-cron
 ```
