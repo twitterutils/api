@@ -5,7 +5,7 @@
   "scripts": {
     "install": "cd api && npm i && cd .. && cd cronjobs && npm i",
     "web": "cd api && npm start",
-    "worker": "cd cronjobs && npm start",
+    "worker": "cd cronjobs && echo cron",
     "test": "cd api && npm t && cd .. && cd cronjobs && npm t"
   }
 }
