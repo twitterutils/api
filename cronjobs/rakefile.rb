@@ -65,7 +65,14 @@ task :env_file do
 end
 
 task :env_cmd do
-    # all_env_variables_list = read_env_variables_list
+    all_env_variables_list = read_env_variables_list
+
+    env_var_lines = []
+    env_var_lines.push generate_task_schedule(true)
+    env_var_lines.push generate_copy_vars(all_env_variables_list, true)
+    all_env_variables_list.each { |l| env_var_lines.push l }
+
+    env_var_lines.map { |e| puts e }
 end
 
 task :cleanup do
