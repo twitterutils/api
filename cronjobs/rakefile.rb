@@ -23,26 +23,21 @@ def get_all_var_names(vars_list)
         .join(",")
 end
 
-def generate_copy_vars(vars_list, enclosed_in_quotes=false)
-    value = get_all_var_names vars_list
-
+def env_var(name, value, enclose_value_in_quotes)
     value_str = value
-    if enclosed_in_quotes then
+    if enclose_value_in_quotes then
         value_str="'#{value}'"
     end
 
-    "COPY_ENV_VARS=#{value_str}"
+    "#{name}=#{value_str}"
 end
 
-def generate_task_schedule(enclosed_in_quotes=false)
-    value = "*/10 * * * *"
+def generate_copy_vars(vars_list, enclose_value_in_quotes=false)
+    env_var("COPY_ENV_VARS", get_all_var_names(vars_list), enclose_value_in_quotes)
+end
 
-    value_str = value
-    if enclosed_in_quotes then
-        value_str = "'#{value}'"
-    end
-
-    "TASK_SCHEDULE=#{value_str}"
+def generate_task_schedule(enclose_value_in_quotes=false)
+    env_var("TASK_SCHEDULE", "*/10 * * * *", enclose_value_in_quotes)
 end
 
 task :env => [:cleanup, :env_file, :env_cmd] do
