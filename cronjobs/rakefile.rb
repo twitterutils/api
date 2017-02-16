@@ -40,7 +40,7 @@ def generate_copy_vars(vars_list, enclose_value_in_quotes=false)
 end
 
 def generate_task_schedule(enclose_value_in_quotes=false)
-    env_var("TASK_SCHEDULE", "*/10 * * * *", enclose_value_in_quotes)
+    env_var("TASK_SCHEDULE", "0,15,30,45 * * * *", enclose_value_in_quotes)
 end
 
 task :e => :env
