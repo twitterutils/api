@@ -1,4 +1,5 @@
 ENV_FILE_NAME = ".env-prod"
+ENV_COMMAND_FILE_NAME = ".env-prod-cmd"
 
 def run_s(command)
     run(command, true)
@@ -72,9 +73,16 @@ task :env_cmd do
     env_var_lines.push generate_copy_vars(all_env_variables_list, true)
     all_env_variables_list.each { |l| env_var_lines.push l }
 
-    env_var_lines.map { |e| puts e }
+    env_cmd_text = env_var_lines
+        .map { |l| "--env #{l}" }
+        .join(" ")
+
+    File.open(ENV_COMMAND_FILE_NAME, 'w') do |f|
+        f.write env_cmd_text
+    end
 end
 
 task :cleanup do
     `rm -f #{ENV_FILE_NAME}`
+    `rm -f #{ENV_COMMAND_FILE_NAME}`
 end
