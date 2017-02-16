@@ -1,3 +1,5 @@
+task :default => [:e]
+
 ENV_FILE_NAME = ".env-prod"
 ENV_COMMAND_FILE_NAME = ".env-prod-cmd"
 
@@ -41,6 +43,7 @@ def generate_task_schedule(enclose_value_in_quotes=false)
     env_var("TASK_SCHEDULE", "*/10 * * * *", enclose_value_in_quotes)
 end
 
+task :e => :env
 task :env => [:cleanup, :env_file, :env_cmd] do
 end
 
@@ -82,6 +85,7 @@ task :env_cmd do
     end
 end
 
+task :c => :cleanup
 task :cleanup do
     `rm -f #{ENV_FILE_NAME}`
     `rm -f #{ENV_COMMAND_FILE_NAME}`
