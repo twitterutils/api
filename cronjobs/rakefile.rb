@@ -17,11 +17,32 @@ def read_env_variables_list
     all_env_variables_raw.split
 end
 
-def generate_copy_vars(vars_list)
-    all_var_names = vars_list
+def get_all_var_names(vars_list)
+    vars_list
         .map { |kvstr| kvstr.split("=")[0] }
         .join(",")
-    "COPY_ENV_VARS=#{all_var_names}"
+end
+
+def generate_copy_vars(vars_list, enclosed_in_quotes=false)
+    value = get_all_var_names vars_list
+
+    value_str = value
+    if enclosed_in_quotes then
+        value_str="'#{value}'"
+    end
+
+    "COPY_ENV_VARS=#{value_str}"
+end
+
+def generate_task_schedule(enclosed_in_quotes=false)
+    value = "*/10 * * * *"
+
+    value_str = value
+    if enclosed_in_quotes then
+        value_str = "'#{value}'"
+    end
+
+    "TASK_SCHEDULE=#{value_str}"
 end
 
 task :env => [:cleanup, :env_file, :env_cmd] do
@@ -37,7 +58,7 @@ task :env_file do
     # puts env_variables
 
     File.open(ENV_FILE_NAME, 'w') do |f|
-        f.puts "TASK_SCHEDULE=*/10 * * * *"
+        f.puts generate_task_schedule
         f.puts generate_copy_vars(env_variables)
 
         env_variables.each { |l|
