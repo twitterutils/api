@@ -1,0 +1,4 @@
+{
+    "Image": "camilin87/twitterutils_cronjobs:latest",
+    "Name": "twu-cron"
+}
