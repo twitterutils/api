@@ -180,5 +180,33 @@ describe("twitterFollowersService", function () {
                     done()
                 })
         })
+
+        it("does not blow up when a friendship does not exist", function(done){
+            var seededError = {
+                statusCode: 404,
+                data: '{"errors":[{"code":34,"message":"Sorry, that page does not exist."}]}'
+            }
+
+            spyOn(twitterClientStub, "doPost")
+                .and
+                .callFake((url, callParams, errCallback, successCallback) => {
+                    invocation = {
+                        url: url,
+                        callParams: callParams
+                    }
+                    errCallback(seededError)
+                })
+
+            service
+                .unfollow({
+                    id: "44455",
+                    oauth_access_token: "token",
+                    oauth_access_token_secret: "token_secret"
+                }, "55555")
+                .then(() => {
+                    expect(disabledUsers).toEqual([])
+                    done()
+                })
+        })
     })
 })

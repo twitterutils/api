@@ -29,12 +29,17 @@ module.exports = function (registeredUsersDataService, twitterClientFactory, twi
                         twitterClient.baseUrl + "/friendships/destroy.json",
                         {user_id: userId},
                         (err) => {
-                            if (!shouldDisableUser(err)){
-                                reject(err);
+                            if (shouldDisableUser(err)){
+                                disableUser(credentials.id).then(fulfill, reject);
                                 return;
                             }
 
-                            disableUser(credentials.id).then(fulfill, reject);
+                            if (shouldIgnoreFriendshipDoesNotExistError(err)){
+                                fulfill();
+                                return;
+                            }
+
+                            reject(err);
                         },
                         (apiResponseInfoStr) => {
                             var apiResponse = JSON.parse(apiResponseInfoStr);
@@ -63,6 +68,27 @@ module.exports = function (registeredUsersDataService, twitterClientFactory, twi
 
         if (result){
             console.log("UnauthorizedError", error);
+        }
+
+        return result;
+    }
+
+    function shouldIgnoreFriendshipDoesNotExistError(error){
+        if (error.statusCode !== 404){
+            return false;
+        }
+
+        var errorData = JSON.parse(error.data);
+        var result = false;
+
+        errorData.errors.forEach((element, index, array) => {
+            if (element.code === 34){
+                result = true;
+            }
+        });
+
+        if (result){
+            console.log("FriendshipDoesNotExistError", error);
         }
 
         return result;
