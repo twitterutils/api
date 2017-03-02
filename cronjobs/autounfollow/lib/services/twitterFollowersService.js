@@ -53,28 +53,15 @@ module.exports = function (registeredUsersDataService, twitterClientFactory, twi
     };
 
     function shouldDisableUser(error){
-        if (error.statusCode !== 403){
-            return false;
-        }
-
-        var errorData = JSON.parse(error.data);
-        var result = false;
-
-        errorData.errors.forEach((element, index, array) => {
-            if (element.code === 220){
-                result = true;
-            }
-        });
-
-        if (result){
-            console.log("UnauthorizedError", error);
-        }
-
-        return result;
+        return errorContains(error, 403, 220, "UnauthorizedError")
     }
 
     function shouldIgnoreFriendshipDoesNotExistError(error){
-        if (error.statusCode !== 404){
+        return errorContains(error, 404, 34, "FriendshipDoesNotExistError")
+    }
+
+    function errorContains(error, responseCode, code, message){
+         if (error.statusCode !== responseCode){
             return false;
         }
 
@@ -82,13 +69,13 @@ module.exports = function (registeredUsersDataService, twitterClientFactory, twi
         var result = false;
 
         errorData.errors.forEach((element, index, array) => {
-            if (element.code === 34){
+            if (element.code === code){
                 result = true;
             }
         });
 
         if (result){
-            console.log("FriendshipDoesNotExistError", error);
+            console.log(message, error);
         }
 
         return result;
