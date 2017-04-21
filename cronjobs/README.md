@@ -26,26 +26,20 @@ Run the container
 Run it as a cron  
 
 ```bash
-cat > gen_containerInfo.json <<EOL
-{
-    "Image": "camilin87/twitterutils_cronjobs:latest",
-    "Name": "twu-cron"
-}
-EOL
-
+# these instructions are Docker 1.13 only
 # run the cron locally  
-docker run --rm -d --name docker-scrapy-cron                  \
+docker run --rm -d --name twu-cron-scheduler                  \
   -v /var/run/docker.sock:/var/run/docker.sock                \
-  -v $PWD/gen_containerInfo.json:/usr/src/containerInfo.json  \
   --env-file=.env-prod                                        \
-  camilin87/docker-cron
+  camilin87/twitterutils_cronjobs_scheduler
 
-# run the cron as a swarm service  
+# run the cron as a swarm service
 docker service create \
   --replicas 1 \
   --name twu-cron-scheduler \
   --env-file=.env-prod \
   --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
-  --mount type=bind,source=$PWD/gen_containerInfo.json,destination=/usr/src/containerInfo.json \
-  camilin87/docker-cron
+  camilin87/twitterutils_cronjobs_scheduler
+
+# for Docker 1.12 use the contents of the .env-prod-cmd file as environment parameters
 ```
