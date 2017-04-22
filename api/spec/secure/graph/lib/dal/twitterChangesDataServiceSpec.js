@@ -26,20 +26,26 @@ describe("twitterChangesDataService", function(){
                         find: function(req){
                             dbRequests.push(req);
                             return {
-                                toArray: function(){
-                                     return promise.create((fulfill, reject) => {
-                                        if (seededError){
-                                            reject(seededError);
-                                            return;
-                                        }
-                                        
-                                        if (seededResult){
-                                            fulfill(seededResult);
-                                            return;
-                                        }
+                                limit: function(n){
+                                    if (n != 500) jasmine.getEnv().fail("Invalid seeding for limit");
 
-                                        return jasmine.getEnv().fail("Invalid seeding");
-                                    });
+                                    return {
+                                        toArray: function(){
+                                             return promise.create((fulfill, reject) => {
+                                                if (seededError){
+                                                    reject(seededError);
+                                                    return;
+                                                }
+                                                
+                                                if (seededResult){
+                                                    fulfill(seededResult);
+                                                    return;
+                                                }
+
+                                                return jasmine.getEnv().fail("Invalid seeding");
+                                            });
+                                        }
+                                    }
                                 }
                             }
                         }

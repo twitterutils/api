@@ -21,6 +21,7 @@ module.exports = function(db){
                 db
                     .collection("crawler_twitter_changes")
                     .find(queryParameters)
+                    .limit(500)
                     .toArray()
                     .then((result) => {
                         fulfill(result);
