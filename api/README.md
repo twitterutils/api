@@ -304,3 +304,12 @@ Retrieves a list of the userIds to be crawled.
 The application will read its environment variables from `.env`. This file is not in source control. Therefore it is sane to keep it in a backed up location.
 
     ln -s ~/<PATH_TO_ACTUAL_UTILS_FILE>/twitter_utils_api_env.txt .env
+
+### Seeding the Database  
+
+Open a mongo shell and create the `db_status` collection with an item.  
+
+```js
+use twu_api_db2
+db.db_status.insert({ operational: true })
+```
