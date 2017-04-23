@@ -25,6 +25,8 @@
     "devfeedbuilder": "nf run node feedbuilder/main.js",
     "debugfeedbuilder": "nf run node-debug feedbuilder/main.js",
 
+    "devcleanup": "nf run node cleanup/main.js",
+    "debugcleanup": "nf run node-debug cleanup/main.js",
 
     "test": "jasmine",
     "testwatch": "watch -n2 jasmine",

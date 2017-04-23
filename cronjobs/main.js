@@ -14,7 +14,8 @@ var async = require("async");
 
         runService(rfr("autounfollow/service")),
 
-        runService(rfr("feedbuilder/service"))
+        runService(rfr("feedbuilder/service")),
+        runService(rfr("cleanup/service"))
     ], handleResults);
 
     function runService(service, consolePrefix){
