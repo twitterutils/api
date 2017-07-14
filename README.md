@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/twitterutils/api.svg?branch=master)](https://travis-ci.org/twitterutils/api)  
 
-Automate your Twitter workflow. Unfollow those that unfollow you.  
+Automate your Twitter workflow.
+Unfollow those that unfollow you.
 
 ## Components  
 
